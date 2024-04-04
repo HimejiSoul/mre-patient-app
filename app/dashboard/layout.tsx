@@ -16,12 +16,12 @@ export default function Layout({ children }: { children: React.ReactNode }) {
       <div className="hidden w-full flex-none md:block md:w-64">
         <SideNav />
       </div>
-      <div className="flex justify-between px-8 py-4 md:hidden">
+      <div className="flex justify-between px-4 py-2 md:hidden">
         <Sheet>
           <SheetTrigger>
             <Bars3Icon className="my-auto h-5 md:ml-4" />
           </SheetTrigger>
-          <SheetContent side={'left'} className="w-[400px] sm:w-[300px]">
+          <SheetContent side={'left'} className="w-[250px] p-0 md:w-[300px]">
             <SideNav />
           </SheetContent>
         </Sheet>
@@ -30,7 +30,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
           <p className="text-xs text-rme-pink-900">Pasien</p>
         </div>
       </div>
-      <div className="no-scrollbar relative flex w-full grow flex-col overflow-y-scroll p-8">
+      <div className="no-scrollbar relative flex w-full grow flex-col overflow-y-scroll p-4 md:p-8">
         {children}
       </div>
       <div className=" hidden w-fit xl:block xl:w-80">

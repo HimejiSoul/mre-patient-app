@@ -1,4 +1,4 @@
-import KBForm from '@/app/ui/reservasi-layanan/reservasi-form';
+import ReservasiForm from '@/app/ui/reservasi-layanan/reservasi-form';
 import { Metadata } from 'next';
 
 export const metadata: Metadata = {
@@ -6,5 +6,5 @@ export const metadata: Metadata = {
 };
 
 export default async function Page() {
-  return <KBForm />;
+  return <ReservasiForm />;
 }

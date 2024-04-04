@@ -6,10 +6,10 @@ export function CreateKBForm() {
   return (
     <Link
       href="/dashboard/reservasi-layanan"
-      className="flex h-10 items-center rounded-lg bg-rme-pink-900 px-4 text-sm font-medium text-white transition-colors hover:bg-pink-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-600"
+      className="flex h-8 items-center rounded-lg bg-rme-pink-900 px-3 text-[10px] font-medium text-white transition-colors hover:bg-pink-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-600 md:h-10 md:px-4"
     >
       <PlusIcon className="mr-2 h-5 md:mr-4" />
-      <span>Lakukan Reservasi</span>
+      <span className="w-fit">Lakukan Reservasi</span>
     </Link>
   );
 }

@@ -65,7 +65,7 @@ const FormSchema = z.object({
   }),
 });
 
-export default function KBForm() {
+export default function ReservasiForm() {
   const form = useForm<z.infer<typeof FormSchema>>({
     resolver: zodResolver(FormSchema),
     defaultValues: {
@@ -100,10 +100,10 @@ const GeneralInformation = ({ form }: any) => {
     <div>
       {/* General Information */}
       <div>
-        <p className={` ${urbanist.className} text-xl font-bold`}>
+        <p className={` ${urbanist.className} text-sm font-bold md:text-xl`}>
           Reservasi Layanan
         </p>
-        <p className="mb-2 block text-sm font-medium text-[#597395]">
+        <p className="mb-2 block text-xs font-medium text-[#597395] md:text-sm">
           Pilih layanan dan waktu reservasi
         </p>
       </div>

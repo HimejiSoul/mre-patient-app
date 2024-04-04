@@ -27,7 +27,7 @@ export default async function Page({
     <div className="w-full rounded-2xl bg-rme-pink-150 p-5">
       <div className="flex w-full justify-between">
         <p
-          className={`${urbanist.className} my-auto align-middle text-2xl font-bold`}
+          className={`${urbanist.className} text-md my-auto align-middle font-bold md:text-2xl`}
         >
           Tabel Reservasi Pasien
         </p>
