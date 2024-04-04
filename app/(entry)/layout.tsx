@@ -17,7 +17,7 @@ function BackgroundAssets() {
         width={0}
         height={0}
         alt="Just an asset, doesn't matter"
-        className="absolute left-0 top-0 h-auto w-[250px]"
+        className="absolute left-0 top-0 h-auto w-[100px] md:w-[250px]"
       />
       <Image
         src="/svg/rectangle-1.svg"
@@ -31,14 +31,14 @@ function BackgroundAssets() {
         width={0}
         height={0}
         alt="Just an asset, doesn't matter"
-        className="absolute right-0 top-0 h-auto w-[580px]"
+        className="absolute right-0 top-0 h-auto w-[300px] md:w-[580px]"
       />
       <Image
         src="/svg/vector-2.svg"
         width={0}
         height={0}
         alt="Just an asset, doesn't matter"
-        className="absolute bottom-0 left-0 h-auto w-[600px]"
+        className="absolute bottom-0 left-0 h-auto w-[320px] md:w-[600px]"
       />
     </>
   );

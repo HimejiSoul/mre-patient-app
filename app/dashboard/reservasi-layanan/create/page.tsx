@@ -1,4 +1,4 @@
-import KBForm from '@/app/ui/keluarga-berencana/kb-form';
+import KBForm from '@/app/ui/reservasi-layanan/reservasi-form';
 import { SectionTitle } from '@/app/ui/section-title';
 
 export default async function Page() {

@@ -5,11 +5,11 @@ import { deleteInvoice } from '@/app/lib/actions';
 export function CreateKBForm() {
   return (
     <Link
-      href="/dashboard/keluarga-berencana/create"
-      className="flex h-10 items-center rounded-lg bg-blue-600 px-4 text-sm font-medium text-white transition-colors hover:bg-blue-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-600"
+      href="/dashboard/reservasi-layanan"
+      className="flex h-10 items-center rounded-lg bg-rme-pink-900 px-4 text-sm font-medium text-white transition-colors hover:bg-pink-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-600"
     >
-      <span className="hidden md:block">Tambah Pasien</span>{' '}
-      <PlusIcon className="h-5 md:ml-4" />
+      <PlusIcon className="mr-2 h-5 md:mr-4" />
+      <span>Lakukan Reservasi</span>
     </Link>
   );
 }

@@ -1,5 +1,5 @@
-import Form from '@/app/ui/keluarga-berencana/edit-form';
-import Breadcrumbs from '@/app/ui/keluarga-berencana/breadcrumbs';
+import Form from '@/app/ui/reservasi-layanan/edit-form';
+import Breadcrumbs from '@/app/ui/reservasi-layanan/breadcrumbs';
 import { fetchInvoiceById, fetchCustomers } from '@/app/lib/data';
 import { notFound } from 'next/navigation';
 

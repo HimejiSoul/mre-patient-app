@@ -1,5 +1,5 @@
 'use client';
-
+import { PlusIcon } from '@heroicons/react/24/outline';
 import { useFormStatus } from 'react-dom';
 import { createKBPatient } from '@/app/lib/actions';
 import { format } from 'date-fns';
@@ -40,9 +40,10 @@ function SubmitButton() {
     <Button
       type="submit"
       aria-disabled={pending}
-      className="mt-5 w-fit bg-rme-pink-900 hover:bg-pink-500"
+      className="mt-5 w-fit self-end bg-rme-pink-900 hover:bg-pink-500"
     >
       Lakukan Reservasi
+      <PlusIcon className="h-5 md:ml-4" />
     </Button>
   );
 }
@@ -80,7 +81,7 @@ export default function KBForm() {
   }
 
   return (
-    <div className="bg-rme-pink-150 rounded-xl px-4 py-6 ">
+    <div className="rounded-xl bg-rme-pink-150 px-4 py-6 ">
       <Form {...form}>
         <form
           onSubmit={form.handleSubmit(onSubmit)}
@@ -109,7 +110,7 @@ const GeneralInformation = ({ form }: any) => {
 
       <div className=" flex w-full flex-col gap-3 overflow-auto rounded-md bg-white px-6 py-4">
         {/* kolom 1 */}
-        <div className="flex w-96">
+        <div className="flex w-full md:w-96">
           <div className="w-full">
             <FormField
               control={form.control}
@@ -132,7 +133,7 @@ const GeneralInformation = ({ form }: any) => {
         </div>
 
         {/* kolom 2 */}
-        <div className="flex w-96">
+        <div className="flex w-full md:w-96">
           <div className="w-full">
             <FormField
               control={form.control}
@@ -162,7 +163,7 @@ const GeneralInformation = ({ form }: any) => {
         </div>
 
         {/* kolom 3 */}
-        <div className="flex w-96 gap-4">
+        <div className="flex w-full gap-4 md:w-96">
           <div className="w-1/2">
             <FormField
               control={form.control}

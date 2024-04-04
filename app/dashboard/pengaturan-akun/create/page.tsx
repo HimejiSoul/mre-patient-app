@@ -1,4 +1,4 @@
-import KBForm from '@/app/ui/keluarga-berencana/kb-form';
+import KBForm from '@/app/ui/reservasi-layanan/reservasi-form';
 import { fetchCustomers } from '@/app/lib/data';
 import { ChevronLeft, Link } from 'lucide-react';
 import { urbanist } from '@/app/ui/fonts';

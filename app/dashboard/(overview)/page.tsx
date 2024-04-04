@@ -1,36 +1,44 @@
-import RevenueChart from '@/app/ui/dashboard/revenue-chart';
-import LatestInvoices from '@/app/ui/dashboard/latest-invoices';
+import Pagination from '@/app/ui/reservasi-layanan/pagination';
+import Search from '@/app/ui/search';
+import Table from '@/app/ui/reservasi-layanan/table';
+import { CreateKBForm } from '@/app/ui/reservasi-layanan/buttons';
 import { urbanist } from '@/app/ui/fonts';
+import { InvoicesTableSkeleton } from '@/app/ui/skeletons';
 import { Suspense } from 'react';
-import { RevenueChartSkeleton, CardsSkeleton } from '@/app/ui/skeletons';
-import CardWrapper from '@/app/ui/dashboard/cards';
+import { fetchInvoicesPages } from '@/app/lib/data';
 import { Metadata } from 'next';
 
 export const metadata: Metadata = {
   title: 'Dashboard',
 };
 
-export default async function Page() {
+export default async function Page({
+  searchParams,
+}: {
+  searchParams?: {
+    query?: string;
+    page?: string;
+  };
+}) {
+  const query = searchParams?.query || '';
+  const currentPage = Number(searchParams?.page) || 1;
+  const totalPages = await fetchInvoicesPages(query);
   return (
-    <main className="rounded-2xl bg-[#D0E4FF] p-5">
-      <h1
-        className={`${urbanist.className} mb-4 text-xl font-bold md:text-2xl`}
-      >
-        Total Pasien tiap Layanan
-      </h1>
-      <div className="grid gap-3  sm:grid-cols-2 lg:grid-cols-6">
-        <Suspense fallback={<CardsSkeleton />}>
-          <CardWrapper />
-        </Suspense>
+    <div className="w-full rounded-2xl bg-rme-pink-150 p-5">
+      <div className="flex w-full justify-between">
+        <p
+          className={`${urbanist.className} my-auto align-middle text-2xl font-bold`}
+        >
+          Tabel Reservasi Pasien
+        </p>
+        <CreateKBForm />
       </div>
-      <div className="mt-6">
-        <Suspense fallback={<RevenueChartSkeleton />}>
-          <RevenueChart />
-        </Suspense>
-        {/* <Suspense fallback={<LatestInvoicesSkeleton />}>
-          <LatestInvoices />
-        </Suspense> */}
+      <Suspense key={query + currentPage} fallback={<InvoicesTableSkeleton />}>
+        <Table query={query} currentPage={currentPage} />
+      </Suspense>
+      <div className="mt-5 flex w-full justify-center">
+        <Pagination totalPages={totalPages} />
       </div>
-    </main>
+    </div>
   );
 }

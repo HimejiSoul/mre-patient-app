@@ -21,7 +21,7 @@ async function getUser(
   email: string,
   password: string,
 ): Promise<User | undefined> {
-  const apiEndpoint = `${process.env.API_ENDPOINT}/loginbidan_endpoint/login`;
+  const apiEndpoint = `${process.env.API_ENDPOINT}/login_endpoint/login`;
   try {
     const response: AxiosResponse<any> = await axios.get(
       `${apiEndpoint}?username=${email}&password=${password}`,
