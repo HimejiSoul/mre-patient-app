@@ -1,14 +1,7 @@
 import SideNav from '@/app/ui/dashboard/sidenav';
 import Rightbar from '@/app/ui/dashboard/rightBar';
 import { Bars3Icon } from '@heroicons/react/24/outline';
-import {
-  Sheet,
-  SheetContent,
-  SheetDescription,
-  SheetHeader,
-  SheetTitle,
-  SheetTrigger,
-} from '@/components/ui/sheet';
+import { Sheet, SheetContent, SheetTrigger } from '@/components/ui/sheet';
 
 export default function Layout({ children }: { children: React.ReactNode }) {
   return (
