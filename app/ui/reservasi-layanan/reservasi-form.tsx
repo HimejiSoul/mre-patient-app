@@ -49,19 +49,17 @@ function SubmitButton() {
 }
 
 const FormSchema = z.object({
-  generalInformation: z.object({
-    nama: z.string({
-      required_error: 'Harap Diisi',
-    }),
-    layanan: z.string({
-      required_error: 'Harap Diisi',
-    }),
-    hariReservasi: z.date({
-      required_error: 'Harap Diisi',
-    }),
-    waktuTersedia: z.string({
-      required_error: 'Harap Diisi',
-    }),
+  nama: z.string({
+    required_error: 'Harap Diisi',
+  }),
+  layanan: z.string({
+    required_error: 'Harap Diisi',
+  }),
+  hariReservasi: z.date({
+    required_error: 'Harap Diisi',
+  }),
+  waktuTersedia: z.string({
+    required_error: 'Harap Diisi',
   }),
 });
 
@@ -69,9 +67,7 @@ export default function ReservasiForm() {
   const form = useForm<z.infer<typeof FormSchema>>({
     resolver: zodResolver(FormSchema),
     defaultValues: {
-      generalInformation: {
-        nama: 'Rai Barokah Utari',
-      },
+      nama: 'Rai Barokah Utari',
     },
   });
 
@@ -98,7 +94,6 @@ export default function ReservasiForm() {
 const GeneralInformation = ({ form }: any) => {
   return (
     <div>
-      {/* General Information */}
       <div>
         <p className={` ${urbanist.className} text-sm font-bold md:text-xl`}>
           Reservasi Layanan
@@ -114,7 +109,7 @@ const GeneralInformation = ({ form }: any) => {
           <div className="w-full">
             <FormField
               control={form.control}
-              name="generalInformation.nama"
+              name="nama"
               render={({ field }) => (
                 <FormItem>
                   <FormLabel>Nama</FormLabel>
@@ -137,7 +132,7 @@ const GeneralInformation = ({ form }: any) => {
           <div className="w-full">
             <FormField
               control={form.control}
-              name="generalInformation.layanan"
+              name="layanan"
               render={({ field }) => (
                 <FormItem>
                   <Select
@@ -167,7 +162,7 @@ const GeneralInformation = ({ form }: any) => {
           <div className="w-1/2">
             <FormField
               control={form.control}
-              name="generalInformation.hariReservasi"
+              name="hariReservasi"
               render={({ field }) => (
                 <FormItem>
                   <FormLabel>Hari Reservasi</FormLabel>
@@ -210,7 +205,7 @@ const GeneralInformation = ({ form }: any) => {
           <div className="w-1/2">
             <FormField
               control={form.control}
-              name="generalInformation.waktuTersedia"
+              name="waktuTersedia"
               render={({ field }) => (
                 <FormItem>
                   <FormLabel>Waktu Reservasi yang Tersedia</FormLabel>
@@ -224,11 +219,9 @@ const GeneralInformation = ({ form }: any) => {
                       </SelectTrigger>
                     </FormControl>
                     <SelectContent>
-                      <SelectItem value="Tidak Tamat SD">
-                        10:00-12:00
-                      </SelectItem>
-                      <SelectItem value="Tamat SLTA">12:00-14:00</SelectItem>
-                      <SelectItem value="Tamat SD">14:00-16:00</SelectItem>
+                      <SelectItem value="10:00-12:00">10:00-12:00</SelectItem>
+                      <SelectItem value="12:00-14:00">12:00-14:00</SelectItem>
+                      <SelectItem value="14:00-16:00">14:00-16:00</SelectItem>
                     </SelectContent>
                   </Select>
                   <FormMessage />

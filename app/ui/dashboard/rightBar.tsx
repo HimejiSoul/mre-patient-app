@@ -12,9 +12,9 @@ export default function Rightbar() {
       <div className="font-base flex h-10 flex-row justify-end gap-3 text-right text-sm">
         <div className="flex flex-col">
           <p className="font-bold">Rai Barokah Utari</p>
-          <p className="text-rme-pink-900 text-xs">Pasien</p>
+          <p className="text-xs text-rme-pink-900">Pasien</p>
         </div>
-        <div className="bg-rme-pink-900 w-10 rounded-full"></div>
+        <div className="w-10 rounded-full bg-rme-pink-900"></div>
       </div>
       <div className={`flex flex-col font-bold text-black`}>
         <p className={`${urbanist.className} text-lg`}>Kalender</p>
@@ -26,20 +26,6 @@ export default function Rightbar() {
         />
       </div>
       <div className="my-2 border border-[#C5D3E3]" />
-      <div className="text-black">
-        <div className={`${urbanist.className} h-10 text-lg font-bold`}>
-          Reservasi Hari ini
-        </div>
-        <div className="flex flex-row justify-between">
-          <div className="h-10">
-            <div className="text-sm">Nazwa Barokah Utari</div>
-            <div className="text-xs font-normal text-[#A5A5A5]">
-              Keluarga Berencana (KB)
-            </div>
-          </div>
-          <div className="self-center text-xs text-[#A5A5A5]">18.30</div>
-        </div>
-      </div>
     </div>
   );
 }

@@ -9,7 +9,7 @@ export function CreateKBForm() {
       className="flex h-7 items-center rounded-lg bg-rme-pink-900 px-3 text-[10px] font-medium text-white transition-colors hover:bg-pink-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-600 md:h-10 md:px-4 md:text-sm"
     >
       <PlusIcon className="mr-1 h-3 md:mr-4 md:h-5" />
-      <span>Lakukan Reservasi</span>
+      <span className="hidden md:block">Lakukan Reservasi</span>
     </Link>
   );
 }
