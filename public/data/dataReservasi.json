@@ -1,0 +1,20 @@
+{
+  "data": [
+    {
+      "jenisLayanan": "Keluarga Berencana",
+      "tglReservasi": "16-10-2023",
+      "tglLayanan": "18-10-2023",
+      "waktuDatang": "12.30",
+      "desc": "IUD",
+      "status": "Berjalan"
+    },
+    {
+      "jenisLayanan": "Keluarga Berencana",
+      "tglReservasi": "16-10-2023",
+      "tglLayanan": "18-10-2023",
+      "waktuDatang": "12.30",
+      "desc": "IUD",
+      "status": "Selesai"
+    }
+  ]
+}
