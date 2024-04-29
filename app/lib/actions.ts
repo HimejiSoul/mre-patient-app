@@ -6,6 +6,7 @@ import { redirect } from 'next/navigation';
 import { signIn } from '@/auth';
 import { AuthError } from 'next-auth';
 import axios from 'axios';
+import { isRedirectError } from 'next/dist/client/components/redirect';
 
 const FormSchema = z.object({
   id: z.string(),
@@ -34,16 +35,61 @@ export type State = {
   message?: string | null;
 };
 
+export async function editKBPatient(formData: FormData, id_pasien: any) {
+  console.log(id_pasien);
+  const KBData = { data: formData };
+  const apiEndpoint = `${process.env.API_ENDPOINT}/edit_kb/edit_kb?id_pasien=${id_pasien}`;
+  try {
+    const response = await axios.post(apiEndpoint, KBData);
+    console.log(response.data);
+    redirect(`/dashboard/keluarga-berencana`);
+  } catch (error) {
+    if (isRedirectError(error)) {
+      throw error;
+    }
+    console.error('Error:', error);
+  }
+}
 export async function createKBPatient(formData: FormData) {
   const KBData = { data: formData };
   const apiEndpoint = `${process.env.API_ENDPOINT}/regist_kb/regist_kb`;
   try {
     const response = await axios.post(apiEndpoint, KBData);
-    console.log(response.data);
+    // console.log(response.data);
+    const id = response.data.id_pasien;
+    redirect(`/dashboard/keluarga-berencana/${id}/soap`);
+  } catch (error) {
+    if (isRedirectError(error)) {
+      throw error;
+    }
+    console.error('Error:', error);
+  }
+}
+export async function createKBSOAPPatient(formData: FormData, id: any) {
+  const KBSOAPData = { data: { id_pasien: id, ...formData } };
+  const apiEndpoint = `${process.env.API_ENDPOINT}/soap_kb/soap_kb`;
+  try {
+    const response = await axios.post(apiEndpoint, KBSOAPData);
+    // console.log(response.data);
+    redirect('/dashboard/keluarga-berencana');
+  } catch (error) {
+    if (isRedirectError(error)) {
+      throw error;
+    }
+    console.error('Error:', error);
+  }
+}
+
+export async function createKehamilanPatient(formData: FormData) {
+  const kehamilanData = { data: formData };
+  const apiEndpoint = `${process.env.API_ENDPOINT}/regist_kehamilan/regist_kehamilan`;
+  try {
+    const response = await axios.post(apiEndpoint, kehamilanData);
+    // console.log(response.data);
   } catch (error) {
     console.error('Error:', error);
   }
-  redirect('/dashboard/keluarga-berencana/create/soap');
+  redirect('/dashboard/periksa-kehamilan');
 }
 
 export async function createInvoice(prevState: State, formData: FormData) {
