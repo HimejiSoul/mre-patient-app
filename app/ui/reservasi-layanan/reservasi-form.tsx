@@ -1,7 +1,7 @@
 'use client';
 import { PlusIcon } from '@heroicons/react/24/outline';
 import { useFormStatus } from 'react-dom';
-import { createKBPatient } from '@/app/lib/actions';
+import { createReservasi } from '@/app/lib/actions';
 import { format } from 'date-fns';
 import { CalendarIcon } from 'lucide-react';
 import { zodResolver } from '@hookform/resolvers/zod';
@@ -72,7 +72,7 @@ export default function ReservasiForm() {
   });
 
   function onSubmit(data: any) {
-    // createKBPatient(data);
+    createReservasi(data);
     console.log(data);
   }
 

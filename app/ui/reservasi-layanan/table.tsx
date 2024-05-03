@@ -62,88 +62,6 @@ import {
 import { Textarea } from '@/components/ui/textarea';
 import { ChevronLeft } from 'lucide-react';
 
-const dataReservasiPatient = {
-  data: [
-    {
-      id_pasien: 12,
-      name: 'Rai Barokah',
-      usia: 20,
-      tglDatang: 'Minggu 12, Desember 2023',
-      metodeKontrasepsi: 'IUD',
-      subRows: [
-        {
-          tglDatang: '12-12-2023',
-          s: 'Nilai S',
-          td: 'Nilai TD',
-          bb: 68,
-          lain2: 'Nilai lain2',
-          a: 'Nilai A',
-          p: 'Nilai P',
-          hpht: 'Nilai HPHT',
-        },
-      ],
-    },
-    {
-      id_pasien: 321,
-      name: 'Lutfiana',
-      usia: 22,
-      tglDatang: 'Jumat 10, Desember 2023',
-      metodeKontrasepsi: 'IUD',
-      subRows: [
-        {
-          tglDatang: '10-12-2023',
-          s: 'Nilai S',
-          td: 'Nilai TD',
-          bb: 70,
-          lain2: 'Nilai lain2-2',
-          a: 'Nilai A',
-          p: 'Nilai P',
-          hpht: 'Nilai HPHT2',
-        },
-        {
-          tglDatang: '1-12-2023',
-          s: 'Nilai S',
-          td: 'Nilai TD',
-          bb: 65,
-          lain2: 'Nilai lain2-3',
-          a: 'Nilai A',
-          p: 'Nilai P',
-          hpht: 'Nilai HPHT3',
-        },
-      ],
-    },
-    {
-      id_pasien: 111,
-      name: 'Andini Puteri',
-      usia: 56,
-      tglDatang: 'Sabtu 20, Desember 2023',
-      metodeKontrasepsi: 'IUD',
-      subRows: [
-        {
-          tglDatang: '10-12-2023',
-          s: 'Nilai S',
-          td: 'Nilai TD',
-          bb: 70,
-          lain2: 'Nilai lain2-2',
-          a: 'Nilai A',
-          p: 'Nilai P',
-          hpht: 'Nilai HPHT4',
-        },
-        {
-          tglDatang: '1-12-2023',
-          s: 'Nilai S',
-          td: 'Nilai TD',
-          bb: 65,
-          lain2: 'Nilai lain2-3',
-          a: 'Nilai A',
-          p: 'Nilai P',
-          hpht: 'Nilai HPHT5',
-        },
-      ],
-    },
-  ],
-};
-
 type SubPatient = {
   tglDatang: string;
   s: string;
@@ -171,12 +89,6 @@ type TableProps<TData> = {
 // const dataPatients: Patient[] = pasienData.data;
 // console.log(dataPatients);
 
-const FormSchema = z.object({
-  tglKirim: z.any(),
-  waktuKirim: z.string(),
-  isiPesan: z.string(),
-});
-
 function SubmitButton() {
   return (
     <Button
@@ -190,6 +102,12 @@ function SubmitButton() {
 }
 
 const DialogWA = ({ patientname }: any) => {
+  const FormSchema = z.object({
+    tglKirim: z.any(),
+    waktuKirim: z.string(),
+    isiPesan: z.string(),
+  });
+
   const form = useForm<z.infer<typeof FormSchema>>({
     resolver: zodResolver(FormSchema),
     defaultValues: {
@@ -328,7 +246,11 @@ const columns: ColumnDef<Patient>[] = [
       }
       // console.log(statusClass);
 
-      return <div className={statusClass}>{status}</div>;
+      return (
+        <div className={statusClass}>
+          <p>{status}</p>
+        </div>
+      );
     },
     footer: (props) => props.column.id,
   },
@@ -343,9 +265,9 @@ export default function ReservasiTable({
   // currentPage: number;
 }) {
   return (
-    <div className="mt-6 flow-root">
+    <div className="mt-6 flow-root overflow-auto">
       <div className="inline-block min-w-full align-middle">
-        <div className="rounded-lg bg-gray-50 p-2 md:pt-0">
+        <div className="overflow-auto rounded-lg bg-gray-50 p-2 md:pt-0">
           <TableComponent data={dataPatient} columns={columns} />
         </div>
       </div>

@@ -2,21 +2,8 @@ import NextAuth from 'next-auth';
 import Credentials from 'next-auth/providers/credentials';
 import { authConfig } from './auth.config';
 import { z } from 'zod';
-import { sql } from '@vercel/postgres';
 import type { User } from '@/app/lib/definitions';
-import bcrypt from 'bcrypt';
 import axios, { AxiosResponse } from 'axios';
-
-// async function getUser(email: string): Promise<User | undefined> {
-//   try {
-//     const user = await sql<User>`SELECT * FROM users WHERE email=${email}`;
-//     return user.rows[0];
-//   } catch (error) {
-//     console.error('Failed to fetch user:', error);
-//     throw new Error('Failed to fetch user.');
-//   }
-// }
-
 async function getUser(
   email: string,
   password: string,
@@ -29,7 +16,7 @@ async function getUser(
 
     if (response.status === 200) {
       const userData = response.data;
-      console.log(userData);
+      // console.log(userData);
       return userData;
     } else {
       console.error('Failed to fetch user:', response.statusText);
@@ -41,25 +28,38 @@ async function getUser(
   }
 }
 
-export const { auth, signIn, signOut } = NextAuth({
+export const { handlers, signIn, signOut, auth } = NextAuth({
   ...authConfig,
   providers: [
     Credentials({
       async authorize(credentials) {
         const parsedCredentials = z
-          .object({ email: z.string(), password: z.string().min(6) })
+          .object({ username: z.string(), password: z.string().min(6) })
           .safeParse(credentials);
 
         if (parsedCredentials.success) {
-          const { email, password } = parsedCredentials.data;
-          const user = await getUser(email, password);
+          const { username, password } = parsedCredentials.data;
+          const user = await getUser(username, password);
           if (user) {
-            return user;
+            console.log(user);
+            return user.data;
           }
         }
-        console.log('Invalid Credentials');
         return null;
       },
     }),
   ],
+
+  callbacks: {
+    async jwt({ token, user }) {
+      user && (token.user = user);
+      return token;
+    },
+    // FIXME: This ts error
+    async session({ session, token }: any) {
+      // Send properties to the client, like an access_token and user id from a provider.
+      session.user = token.user;
+      return session;
+    },
+  },
 });

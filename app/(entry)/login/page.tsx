@@ -1,6 +1,6 @@
 'use client';
 
-import { AtSign, KeyRound, AlertCircle } from 'lucide-react';
+import { AtSign, KeyRound, AlertCircle, RefreshCcw } from 'lucide-react';
 import { Button } from '@/app/ui/button';
 import { useFormState, useFormStatus } from 'react-dom';
 import { authenticate } from '@/app/lib/actions';
@@ -18,7 +18,7 @@ export default function Page() {
     >
       <section className="_TITLE mb-16 text-center">
         <h2
-          className={`${urbanist.className} text-rme-pink-900 text-lg font-semibold`}
+          className={`${urbanist.className} text-lg font-semibold text-rme-pink-900`}
         >
           Selamat Datang
         </h2>
@@ -29,13 +29,13 @@ export default function Page() {
         </h1>
       </section>
       <section className="_FORM w-full space-y-2">
-        <label htmlFor="email"></label>
+        <label htmlFor="username"></label>
         <div className="relative">
           <input
             className="peer block w-full rounded-md border border-gray-200 py-3 pl-10 text-sm outline-2 placeholder:text-rme-gray-300"
-            id="email"
+            id="username"
             // type="email"
-            name="email"
+            name="username"
             placeholder="Username"
             required
           />
@@ -77,7 +77,7 @@ export default function Page() {
         Belum punya akun?{' '}
         <Link
           href="/register"
-          className="text-rme-pink-900 font-bold hover:underline hover:underline-offset-2"
+          className="font-bold text-rme-pink-900 hover:underline hover:underline-offset-2"
         >
           Buat Akun
         </Link>
@@ -90,11 +90,14 @@ function LoginButton() {
   const { pending } = useFormStatus();
 
   return (
-    <Button
-      className="bg-rme-pink-900 mt-4 w-full hover:bg-pink-900 focus-visible:outline-pink-500 active:bg-pink-600"
-      aria-disabled={pending}
-    >
-      Masuk
+    <Button className="mt-4 w-full" aria-disabled={pending}>
+      {pending ? (
+        <>
+          <RefreshCcw size={20} className="mr-2 animate-spin" /> Loading...
+        </>
+      ) : (
+        'Masuk'
+      )}
     </Button>
   );
 }

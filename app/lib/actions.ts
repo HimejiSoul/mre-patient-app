@@ -35,6 +35,18 @@ export type State = {
   message?: string | null;
 };
 
+export async function createReservasi(formData: FormData) {
+  const reservasiData = { data: formData };
+  const apiEndpoint = `${process.env.API_ENDPOINT}/reservasi/reservasi`;
+  try {
+    const response = await axios.post(apiEndpoint, reservasiData);
+    console.log(response.data);
+  } catch (error) {
+    console.error('Error:', error);
+  }
+  redirect('/dashboard');
+}
+
 export async function editKBPatient(formData: FormData, id_pasien: any) {
   console.log(id_pasien);
   const KBData = { data: formData };

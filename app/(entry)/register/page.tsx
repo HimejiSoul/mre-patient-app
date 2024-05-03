@@ -8,7 +8,7 @@ export default function Register() {
     <form className="z-10 mx-8 max-w-[420px] rounded-2xl bg-white px-8 py-16 shadow-[rgba(13,_38,_76,_0.19)_0px_9px_20px]">
       <section className="_TITLE mb-16 text-center">
         <h2
-          className={`${urbanist.className} text-rme-pink-900 text-lg font-semibold`}
+          className={`${urbanist.className} text-lg font-semibold text-rme-pink-900`}
         >
           Selamat Datang
         </h2>
@@ -81,14 +81,12 @@ export default function Register() {
           <KeyRound className="pointer-events-none absolute left-3 top-1/2 h-[18px] w-[18px] -translate-y-1/2 text-rme-gray-300 peer-focus:text-gray-900" />
         </div>
       </section>
-      <Button className="bg-rme-pink-900 mt-4 w-full hover:bg-pink-900 focus-visible:outline-pink-500 active:bg-pink-600">
-        Buat Akun
-      </Button>
+      <Button className=" mt-4 w-full ">Buat Akun</Button>
       <section className="_CREATE_ACCOUNT mt-4 text-center text-sm font-semibold text-rme-gray-500">
         Sudah punya akun?{' '}
         <Link
           href="/login"
-          className="text-rme-pink-900 font-bold hover:underline hover:underline-offset-2"
+          className="font-bold text-rme-pink-900 hover:underline hover:underline-offset-2"
         >
           Masuk
         </Link>
