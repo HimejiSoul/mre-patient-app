@@ -24,17 +24,23 @@ export function TentangKami() {
             Tentang Kami
           </h1>
           <p className="mt-2 text-justify text-slate-500 md:text-xl">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-            eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim
-            ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-            aliquip ex ea commodo consequat. Duis aute irure dolor in
-            reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
-            pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
-            culpa qui officia deserunt mollit anim id est laborum.Lorem ipsum
-            dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
-            incididunt ut labore et dolore magna aliqua. Ut enim ad minim
-            veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex
-            ea commodo consequat
+            Tim bidan profesional yang berdedikasi untuk memberikan pelayanan
+            kesehatan ibu dan anak yang terbaik. Dengan pengalaman dan keahlian
+            yang luas, kami siap mendampingi Anda dalam setiap tahap kehamilan
+            dan persalinan, memastikan Anda merasa aman dan nyaman.
+            <br />
+            <br />
+            Kami percaya bahwa setiap ibu berhak mendapatkan perawatan yang
+            penuh kasih dan personal. Oleh karena itu, kami menyediakan layanan
+            yang disesuaikan dengan kebutuhan masing-masing individu, dari
+            konsultasi kehamilan, pemeriksaan rutin, hingga proses persalinan
+            dan perawatan pasca melahirkan.
+            <br />
+            <br />
+            Prioritas kami adalah kesejahteraan ibu dan bayi, dengan pendekatan
+            yang ramah, mendukung, dan profesional. Kami berkomitmen untuk terus
+            meningkatkan kualitas layanan kami melalui pelatihan dan
+            pengembangan berkelanjutan.
           </p>
           <div className="mt-6 flex w-full justify-end md:justify-start">
             <Link href="/tentang-kami">

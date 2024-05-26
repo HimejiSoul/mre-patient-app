@@ -23,8 +23,9 @@ export function Hero() {
             Dengan <span className="text-[#e58bac]">Bidan</span> Terbaik
           </h1>
           <p className="mt-2 text-slate-500 md:text-xl">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-            eiusmod tempor incididunt ut labore et dolore magna aliqua.
+            Pelayanan kesehatan yang optimal dengan bidan profesional yang
+            berdedikasi tinggi, siap mendampingi Anda dalam setiap tahap
+            perawatan dan kesehatan ibu dan anak.
           </p>
           <div className="w-fit">
             <Link href="/login">
@@ -95,9 +96,13 @@ export function Hero() {
           </div>
           <div className="w-full bg-red-500"></div>
         </div>
-        <button id="whatsapp-button" className="fixed bottom-8 right-4 z-[80]">
+        <Link
+          href="https://www.instagram.com/bidan.nina"
+          id="WHATSAPP_BUTTON"
+          className="fixed bottom-8 right-4 z-[80]"
+        >
           <Image src={WhatsApp} width={64} height={64} alt="WhatsApp" />
-        </button>
+        </Link>
       </div>
     </main>
   );

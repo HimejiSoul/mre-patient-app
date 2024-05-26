@@ -11,12 +11,10 @@ export function Footer() {
             Bidan Nina Nurlayina
           </h1>
           <p className="mt-2 text-sm font-normal">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nec risus
-            feugiat lectus risus sed ullamcorper. Auctor semper fermentum
-            <br />
-            <br />
-            volutpat integer vel. In rhoncus elementum nunc, malesuada mi sed.
-            Nibh est sit lobortis id semper
+            bidan profesional dengan dedikasi tinggi dan pengalaman luas dalam
+            bidang kesehatan ibu dan anak. Dengan pendekatan yang ramah dan
+            penuh perhatian, Bidan Nina siap memberikan perawatan terbaik selama
+            kehamilan, persalinan, dan masa pasca melahirkan.
           </p>
         </div>
         <div id="USEFUL_LINKS" className="basis-1/3">
