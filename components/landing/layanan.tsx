@@ -71,11 +71,13 @@ export function Layanan() {
             >
               Persalinan
             </h1>
-            <p className="mt-2 text-justify text-slate-500">
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-              eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
-              enim ad minim veniam, quis nostrud exercitation ullamco laboris
-              nisi ut aliquip ex ea commodo consequat.
+            <p className="mt-2 text-justify text-slate-500 md:text-xl">
+              Nikmati pengalaman persalinan yang nyaman dan aman bersama bidan
+              terbaik kami. Kami berkomitmen untuk memberikan pelayanan yang
+              profesional dan penuh perhatian, memastikan ibu dan bayi
+              mendapatkan perawatan yang optimal selama proses persalinan.
+              Keamanan dan kenyamanan Anda adalah prioritas utama kami, dengan
+              pendekatan yang personal dan mendukung di setiap langkahnya.
             </p>
             <div className="mt-6 flex w-full justify-end md:justify-start">
               <Link href="/layanan">
