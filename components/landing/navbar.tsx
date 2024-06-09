@@ -32,13 +32,15 @@ export function Navbar() {
       className="sticky top-0 z-50 w-full bg-white py-2 drop-shadow"
     >
       <div className="container mx-auto mt-0 flex w-full flex-wrap items-center justify-between px-6 py-1 md:py-3">
-        <Image
-          priority
-          src={Logo}
-          width={32}
-          height={32}
-          alt="Logo Bidan Nina"
-        />
+        <Link href="/">
+          <Image
+            priority
+            src={Logo}
+            width={32}
+            height={32}
+            alt="Logo Bidan Nina"
+          />
+        </Link>
         <Sheet>
           <SheetTrigger asChild>
             <Button variant="ghost" size={'icon'} className="md:hidden">
@@ -70,7 +72,7 @@ export function Navbar() {
               {links.map((link, i) => (
                 <li key={i}>
                   <Link
-                    className="rounded-lg bg-white px-4 py-2 text-center font-semibold text-rme-blue-500 hover:bg-rme-blue-500/10"
+                    className="rounded-lg bg-white px-4 py-2 text-center font-semibold text-blue-300 hover:bg-rme-blue-500/10"
                     href={link.href}
                   >
                     {link.name}

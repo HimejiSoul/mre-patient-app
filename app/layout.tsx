@@ -1,6 +1,8 @@
-import '@/app/ui/global.css';
-import { inter } from '@/app/ui/fonts';
+import '@/components/global.css';
 import { Metadata } from 'next';
+import { Navbar } from '@/components/landing/navbar';
+import { Footer } from '@/components/landing/footer';
+import { inter } from '@/components/fonts';
 
 export const metadata: Metadata = {
   title: {
@@ -17,7 +19,12 @@ export default async function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className={`${inter.className} antialiased `}>{children}</body>
+      <body className={`${inter.className} antialiased `}>
+        {' '}
+        <Navbar />
+        {children}
+        <Footer />
+      </body>
     </html>
   );
 }

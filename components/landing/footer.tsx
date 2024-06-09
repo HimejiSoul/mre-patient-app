@@ -1,6 +1,6 @@
-import { urbanist } from '@/app/ui/fonts';
 import { Separator } from '@/components/ui/separator';
 import Link from 'next/link';
+import { urbanist } from '@/components/fonts';
 
 export function Footer() {
   return (

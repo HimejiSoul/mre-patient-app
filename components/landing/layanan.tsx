@@ -1,4 +1,4 @@
-import { urbanist } from '@/app/ui/fonts';
+import { urbanist } from '@/components/fonts';
 import Image from 'next/image';
 import PersalinanImg from '@/public/layanan-persalinan.png';
 import { ArrowRight, ChevronLeft, ChevronRight } from 'lucide-react';

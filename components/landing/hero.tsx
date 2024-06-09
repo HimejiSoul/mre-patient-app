@@ -1,4 +1,4 @@
-import { urbanist } from '@/app/ui/fonts';
+import { urbanist } from '@/components/fonts';
 import { ArrowRight } from 'lucide-react';
 import WhatsApp from '@/public/WhatsApp_icon.png.webp';
 import Image from 'next/image';
@@ -28,10 +28,10 @@ export function Hero() {
             perawatan dan kesehatan ibu dan anak.
           </p>
           <div className="w-fit">
-            <Link href="/login">
+            <Link href="/reservasi-layanan">
               <button
                 id="reservasi-button"
-                className="mt-8 flex items-center justify-center gap-2 rounded-full border-2 border-[#60b7eb] px-4 py-2 font-semibold text-[#60b7eb]"
+                className="mt-8 flex items-center justify-center gap-2 rounded-full border-2 border-[#60b7eb] px-4 py-2 font-semibold text-[#60b7eb] hover:bg-[#60b7eb] hover:text-[#eff6ff] active:bg-[#4989ae]"
               >
                 Reservasi Layanan
                 <ArrowRight size={20} />
