@@ -1,52 +1,21 @@
 'use client';
+
 import { PlusIcon } from '@heroicons/react/24/outline';
 import { useFormStatus } from 'react-dom';
 import { createReservasi } from '@/lib/actions';
-import { format } from 'date-fns';
-import { CalendarIcon } from 'lucide-react';
-import { zodResolver } from '@hookform/resolvers/zod';
 import { useForm } from 'react-hook-form';
 import { z } from 'zod';
-import { cn } from '@/lib/utils';
-import { Calendar } from '@/components/ui/calendar';
 import { Button } from '@/components/ui/button';
-import {
-  Form,
-  FormControl,
-  FormField,
-  FormItem,
-  FormLabel,
-  FormMessage,
-} from '@/components/ui/form';
-import { Input } from '@/components/ui/input';
-import {
-  Select,
-  SelectContent,
-  SelectItem,
-  SelectTrigger,
-  SelectValue,
-} from '@/components/ui/select';
-import {
-  Popover,
-  PopoverContent,
-  PopoverTrigger,
-} from '@/components/ui/popover';
-import {
-  Card,
-  CardContent,
-  CardDescription,
-  CardFooter,
-  CardHeader,
-  CardTitle,
-} from '@/components/ui/card';
-import { Label } from '@/components/ui/label';
-import { urbanist } from '@/components/fonts';
+import { Form } from '@/components/ui/form';
+
+import { Card, CardFooter } from '@/components/ui/card';
 import {
   FormWrapper,
   InputField,
   Row,
   TitleSection,
 } from '@/components/form-content';
+import { zodResolver } from '@hookform/resolvers/zod';
 
 function SubmitButton() {
   const { pending } = useFormStatus();
@@ -81,6 +50,11 @@ const FormSchema = z.object({
     required_error: 'Harap Diisi',
   }),
 });
+
+const ENUM_VALUES = {
+  layanan: ['Keluarga Berencana', 'Periksa Kehamilan', 'Imunisasi'],
+  waktuTersedia: ['08.00-12.30', '15.30-20.30'],
+};
 
 export default function ReservasiForm() {
   const form = useForm<z.infer<typeof FormSchema>>({
@@ -133,11 +107,12 @@ export default function ReservasiForm() {
                   form={form}
                   placeholder="Pilih Layanan..."
                   type="select"
-                  data={[
-                    'Keluarga Berencana',
-                    'Periksa Kehamilan',
-                    'Imunisasi',
-                  ]}
+                  data={ENUM_VALUES.layanan
+                    .filter((data) => data !== '')
+                    .map((data) => ({
+                      value: data,
+                      label: data,
+                    }))}
                   label="Pilih Layanan"
                   className="col-span-12"
                 />
@@ -159,7 +134,12 @@ export default function ReservasiForm() {
                   form={form}
                   placeholder="Waktu Tersedia..."
                   type="select"
-                  data={['08.00-12.30', '15.30-20.30']}
+                  data={ENUM_VALUES.waktuTersedia
+                    .filter((data) => data !== '')
+                    .map((data) => ({
+                      value: data,
+                      label: data,
+                    }))}
                   label="Waktu Reservasi"
                   className="col-span-6"
                 />
