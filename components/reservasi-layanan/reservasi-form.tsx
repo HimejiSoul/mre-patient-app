@@ -2,7 +2,7 @@
 
 import { PlusIcon } from '@heroicons/react/24/outline';
 import { useFormStatus } from 'react-dom';
-import { createReservasi } from '@/lib/actions';
+import { createReservasi, verifyCaptcha } from '@/lib/actions';
 import { useForm } from 'react-hook-form';
 import { z } from 'zod';
 import { Button } from '@/components/ui/button';
@@ -16,21 +16,9 @@ import {
   TitleSection,
 } from '@/components/form-content';
 import { zodResolver } from '@hookform/resolvers/zod';
-
-function SubmitButton() {
-  const { pending } = useFormStatus();
-
-  return (
-    <Button
-      type="submit"
-      aria-disabled={pending}
-      className="mt-5 w-fit self-end bg-rme-pink-900 hover:bg-pink-500"
-    >
-      Lakukan Reservasi
-      <PlusIcon className="h-5 md:ml-4" />
-    </Button>
-  );
-}
+import ReCAPTCHA from 'react-google-recaptcha';
+import { useRef, useState } from 'react';
+import { Loader2Icon } from 'lucide-react';
 
 const FormSchema = z.object({
   nama: z.string({
@@ -43,9 +31,10 @@ const FormSchema = z.object({
   layanan: z.string({
     required_error: 'Harap Diisi',
   }),
-  hariReservasi: z.date({
-    required_error: 'Harap Diisi',
-  }),
+  hariReservasi: z
+    .string()
+    .or(z.date())
+    .transform((arg) => new Date(arg)),
   waktuTersedia: z.string({
     required_error: 'Harap Diisi',
   }),
@@ -57,6 +46,23 @@ const ENUM_VALUES = {
 };
 
 export default function ReservasiForm() {
+  const recaptchaRef = useRef<ReCAPTCHA>(null);
+  const [isVerified, setIsverified] = useState<boolean>(false);
+  const [isLoading, setIsLoading] = useState<boolean>(false);
+
+  async function handleCaptchaSubmission(token: string | null) {
+    try {
+      // Server function to verify captcha
+      await verifyCaptcha(token);
+      setIsverified(true);
+      console.log(isVerified);
+      console.log(isLoading);
+    } catch (error) {
+      setIsverified(false);
+      console.log(isVerified);
+    }
+  }
+
   const form = useForm<z.infer<typeof FormSchema>>({
     resolver: zodResolver(FormSchema),
     defaultValues: {
@@ -65,9 +71,12 @@ export default function ReservasiForm() {
   });
 
   function onSubmit(data: any) {
+    setIsLoading(true);
     createReservasi(data);
     console.log(data);
   }
+
+  const siteKey = process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY;
 
   return (
     <div className="h-[100dvh] rounded-xl px-4 py-6 ">
@@ -76,7 +85,7 @@ export default function ReservasiForm() {
           onSubmit={form.handleSubmit(onSubmit)}
           className="flex w-full flex-col items-center"
         >
-          <Card className=" w-[500px] bg-rme-pink-150 px-4 py-6">
+          <Card className="w-full max-w-2xl bg-rme-pink-150 px-6 py-8">
             <TitleSection
               title="Layanan Reservasi"
               subtitle="Pilih layanan dan waktu reservasi"
@@ -116,7 +125,7 @@ export default function ReservasiForm() {
                   label="Pilih Layanan"
                   className="col-span-12"
                 />
-                <p className="col-span-12 mb-5 text-xs">
+                <p className="col-span-12 text-xs">
                   *Imunisasi Khusus Hari Rabu
                 </p>
               </Row>
@@ -144,8 +153,25 @@ export default function ReservasiForm() {
                   className="col-span-6"
                 />
               </Row>
-              <CardFooter className="flex justify-between">
-                <SubmitButton />
+              <CardFooter className="flex flex-col items-start p-0">
+                <ReCAPTCHA
+                  sitekey={process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY!}
+                  ref={recaptchaRef}
+                  onChange={handleCaptchaSubmission}
+                />
+                <Button
+                  className="mt-3 w-fit bg-rme-pink-900 hover:bg-pink-500"
+                  disabled={isLoading || !isVerified}
+                >
+                  {isLoading ? (
+                    <>
+                      <Loader2Icon size={20} className="mr-2 animate-spin" />
+                      Loading...
+                    </>
+                  ) : (
+                    <>Lakukan Reservasi</>
+                  )}
+                </Button>
               </CardFooter>
             </FormWrapper>
           </Card>

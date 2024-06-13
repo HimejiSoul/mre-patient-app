@@ -38,11 +38,12 @@ export async function createReservasi(formData: FormData) {
   const apiEndpoint = `${process.env.API_ENDPOINT}/reservasi/reservasi`;
   try {
     const response = await axios.post(apiEndpoint, reservasiData);
+    console.log(reservasiData);
     console.log(response.data);
   } catch (error) {
     console.error('Error:', error);
   }
-  redirect('/dashboard');
+  redirect('/');
 }
 
 export async function editKBPatient(formData: FormData, id_pasien: any) {
@@ -100,6 +101,18 @@ export async function createKehamilanPatient(formData: FormData) {
     console.error('Error:', error);
   }
   redirect('/dashboard/periksa-kehamilan');
+}
+
+export async function verifyCaptcha(token: string | null) {
+  const res = await axios.post(
+    `https://www.google.com/recaptcha/api/siteverify?secret=${process.env.RECAPTCHA_SECRET_KEY}&response=${token}`,
+  );
+  if (res.data.success) {
+    console.log('success');
+    return 'success!';
+  } else {
+    throw new Error('Failed Captcha');
+  }
 }
 
 export async function createInvoice(prevState: State, formData: FormData) {
