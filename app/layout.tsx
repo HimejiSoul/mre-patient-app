@@ -20,7 +20,6 @@ export default async function RootLayout({
   return (
     <html lang="en">
       <body className={`${inter.className} antialiased `}>
-        {' '}
         <Navbar />
         {children}
         <Footer />

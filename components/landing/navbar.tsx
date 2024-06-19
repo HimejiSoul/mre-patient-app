@@ -87,6 +87,18 @@ export function Navbar() {
                   </Link>
                 </li>
               ))}
+              {/* <li>
+                <Link
+                  className={`${
+                    '/reservasi-layanan' === path
+                      ? 'bg-sky-50 text-blue-500'
+                      : 'text-[#60b7eb]'
+                  } rounded-full border border-blue-500 px-4 py-2 text-center font-semibold transition duration-300 ease-out hover:bg-rme-blue-500/10`}
+                  href={'/reservasi-layanan'}
+                >
+                  Lakukan Reservasi
+                </Link>
+              </li> */}
             </ul>
           </nav>
         </div>

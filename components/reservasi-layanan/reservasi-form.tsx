@@ -1,12 +1,18 @@
 'use client';
 
-import { PlusIcon } from '@heroicons/react/24/outline';
-import { useFormStatus } from 'react-dom';
+import { AlertTriangle } from 'lucide-react';
 import { createReservasi, verifyCaptcha } from '@/lib/actions';
 import { useForm } from 'react-hook-form';
 import { z } from 'zod';
 import { Button } from '@/components/ui/button';
-import { Form } from '@/components/ui/form';
+import {
+  Form,
+  FormControl,
+  FormField,
+  FormItem,
+  FormLabel,
+  FormMessage,
+} from '@/components/ui/form';
 
 import { Card, CardFooter } from '@/components/ui/card';
 import {
@@ -19,6 +25,14 @@ import { zodResolver } from '@hookform/resolvers/zod';
 import ReCAPTCHA from 'react-google-recaptcha';
 import { useRef, useState } from 'react';
 import { Loader2Icon } from 'lucide-react';
+import { Alert } from '@/components/ui/alert';
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from '@/components/ui/select';
 
 const FormSchema = z.object({
   nama: z.string({
@@ -66,7 +80,7 @@ export default function ReservasiForm() {
   const form = useForm<z.infer<typeof FormSchema>>({
     resolver: zodResolver(FormSchema),
     defaultValues: {
-      // nama: 'Rai Barokah Utari',
+      hariReservasi: new Date(),
     },
   });
 
@@ -76,8 +90,6 @@ export default function ReservasiForm() {
     console.log(data);
   }
 
-  const siteKey = process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY;
-
   return (
     <div className="h-[100dvh] rounded-xl px-4 py-6 ">
       <Form {...form}>
@@ -85,12 +97,52 @@ export default function ReservasiForm() {
           onSubmit={form.handleSubmit(onSubmit)}
           className="flex w-full flex-col items-center"
         >
-          <Card className="w-full max-w-2xl bg-rme-pink-150 px-6 py-8">
+          <Card className="w-full max-w-2xl px-6 py-8">
             <TitleSection
               title="Layanan Reservasi"
               subtitle="Pilih layanan dan waktu reservasi"
             />
             <FormWrapper>
+              <Row>
+                <FormField
+                  control={form.control}
+                  name="layanan"
+                  render={({ field }) => (
+                    <FormItem className="col-span-12">
+                      <FormLabel>Layanan</FormLabel>
+                      <Select
+                        onValueChange={field.onChange}
+                        defaultValue={field.value}
+                      >
+                        <FormControl>
+                          <SelectTrigger>
+                            <SelectValue placeholder="Pilih Layanan" />
+                          </SelectTrigger>
+                        </FormControl>
+                        <SelectContent>
+                          {ENUM_VALUES.layanan.map((layanan, index) => (
+                            <SelectItem key={index} value={layanan}>
+                              {layanan}
+                            </SelectItem>
+                          ))}
+                        </SelectContent>
+                      </Select>
+                      <FormMessage />
+                      {field.value === 'Imunisasi' && (
+                        <Alert
+                          variant="warning"
+                          className="animate-fade-in-translate !mt-2 flex items-center justify-center"
+                        >
+                          <AlertTriangle size={20} strokeWidth={1.5} />
+                          <p className="w-full text-sm">
+                            Layanan Imunisasi hanya tersedia pada hari Rabu.
+                          </p>
+                        </Alert>
+                      )}
+                    </FormItem>
+                  )}
+                />
+              </Row>
               <Row>
                 <InputField
                   name="nama"
@@ -112,32 +164,15 @@ export default function ReservasiForm() {
               </Row>
               <Row>
                 <InputField
-                  name="layanan"
-                  form={form}
-                  placeholder="Pilih Layanan..."
-                  type="select"
-                  data={ENUM_VALUES.layanan
-                    .filter((data) => data !== '')
-                    .map((data) => ({
-                      value: data,
-                      label: data,
-                    }))}
-                  label="Pilih Layanan"
-                  className="col-span-12"
-                />
-                <p className="col-span-12 text-xs">
-                  *Imunisasi Khusus Hari Rabu
-                </p>
-              </Row>
-              <Row>
-                <InputField
                   name="hariReservasi"
                   form={form}
                   placeholder="Hari Reservasi.."
                   type="date"
                   label="Hari Reservasi"
-                  className="col-span-6"
+                  className="col-span-12"
                 />
+              </Row>
+              <Row>
                 <InputField
                   name="waktuTersedia"
                   form={form}
@@ -150,7 +185,7 @@ export default function ReservasiForm() {
                       label: data,
                     }))}
                   label="Waktu Reservasi"
-                  className="col-span-6"
+                  className="col-span-12"
                 />
               </Row>
               <CardFooter className="flex flex-col items-start p-0">
@@ -160,7 +195,7 @@ export default function ReservasiForm() {
                   onChange={handleCaptchaSubmission}
                 />
                 <Button
-                  className="mt-3 w-fit bg-rme-pink-900 hover:bg-pink-500"
+                  className="mt-3 w-full bg-rme-blue-500 hover:bg-[#60b7eb]"
                   disabled={isLoading || !isVerified}
                 >
                   {isLoading ? (
