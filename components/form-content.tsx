@@ -47,7 +47,7 @@ type FormWrapperProps = {
 
 export function FormWrapper({ children }: FormWrapperProps) {
   return (
-    <section className="w-full space-y-4 rounded-md bg-white p-6">
+    <section className="mt-6 w-full space-y-4 rounded-md bg-white">
       {children}
     </section>
   );

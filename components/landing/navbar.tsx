@@ -1,3 +1,5 @@
+'use client';
+
 import { Button } from '@/components/ui/button';
 import { Menu } from 'lucide-react';
 import {
@@ -9,6 +11,7 @@ import {
 import Link from 'next/link';
 import Image from 'next/image';
 import Logo from '@/public/bidan-nina-logo.png';
+import { usePathname } from 'next/navigation';
 
 const links = [
   {
@@ -26,6 +29,7 @@ const links = [
 ];
 
 export function Navbar() {
+  const path = usePathname();
   return (
     <nav
       id="header"
@@ -72,13 +76,29 @@ export function Navbar() {
               {links.map((link, i) => (
                 <li key={i}>
                   <Link
-                    className="rounded-lg bg-white px-4 py-2 text-center font-semibold text-blue-300 hover:bg-rme-blue-500/10"
+                    className={`${
+                      link.href === path
+                        ? 'bg-sky-50 text-blue-500'
+                        : 'text-[#60b7eb]'
+                    } rounded-lg px-4 py-2 text-center font-semibold transition duration-300 ease-out hover:bg-rme-blue-500/10`}
                     href={link.href}
                   >
                     {link.name}
                   </Link>
                 </li>
               ))}
+              {/* <li>
+                <Link
+                  className={`${
+                    '/reservasi-layanan' === path
+                      ? 'bg-sky-50 text-blue-500'
+                      : 'text-[#60b7eb]'
+                  } rounded-full border border-blue-500 px-4 py-2 text-center font-semibold transition duration-300 ease-out hover:bg-rme-blue-500/10`}
+                  href={'/reservasi-layanan'}
+                >
+                  Lakukan Reservasi
+                </Link>
+              </li> */}
             </ul>
           </nav>
         </div>

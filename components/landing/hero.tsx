@@ -8,8 +8,8 @@ import Link from 'next/link';
 
 export function Hero() {
   return (
-    <main className="h-fit min-h-[100dvh] w-full bg-[#eff6ff]">
-      <div className="container static p-8 pb-32 md:flex md:gap-16 md:pb-8">
+    <main className="h-fit w-full bg-[#eff6ff]">
+      <div className="container static p-8 pb-16 md:flex md:gap-16">
         <div id="TITLE" className="basis-1/2 md:pt-32">
           <p
             className={`${urbanist.className} w-fit rounded-lg bg-white p-2 px-4 text-[#60b7eb] drop-shadow-md`}
