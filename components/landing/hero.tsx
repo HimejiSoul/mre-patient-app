@@ -12,17 +12,17 @@ export function Hero() {
       <div className="container static p-8 pb-16 md:flex md:gap-16">
         <div id="TITLE" className="basis-1/2 md:pt-32">
           <p
-            className={`${urbanist.className} w-fit rounded-lg bg-white p-2 px-4 text-[#60b7eb] drop-shadow-md`}
+            className={`${urbanist.className} animate-fade-in-top duration-2000 w-fit rounded-lg bg-white p-2 px-4 text-[#60b7eb] drop-shadow-md`}
           >
             Bidan Terbaik 😍
           </p>
           <h1
-            className={`${urbanist.className} mt-4 text-3xl font-bold text-[#393939] md:text-4xl`}
+            className={`${urbanist.className} animate-fade-in-top mt-4 text-3xl font-bold text-[#393939] duration-1000 md:text-4xl`}
           >
             Dapatkan <span className="text-[#60b7eb]">Pelayanan</span> Terbaik
             Dengan <span className="text-[#e58bac]">Bidan</span> Terbaik
           </h1>
-          <p className="mt-2 text-slate-500 md:text-xl">
+          <p className="animate-fade-in-top mt-2 text-slate-500 duration-1000 md:text-xl">
             Pelayanan kesehatan yang optimal dengan bidan profesional yang
             berdedikasi tinggi, siap mendampingi Anda dalam setiap tahap
             perawatan dan kesehatan ibu dan anak.
@@ -31,7 +31,7 @@ export function Hero() {
             <Link href="/reservasi-layanan">
               <button
                 id="reservasi-button"
-                className="mt-8 flex items-center justify-center gap-2 rounded-full border-2 border-[#60b7eb] px-4 py-2 font-semibold text-[#60b7eb] hover:bg-[#60b7eb] hover:text-[#eff6ff] active:bg-[#4989ae]"
+                className="animate-fade-in-bottom mt-8 flex items-center justify-center gap-2 rounded-full border-2 border-[#60b7eb] px-4 py-2 font-semibold text-[#60b7eb] duration-1000 hover:bg-[#60b7eb] hover:text-[#eff6ff] active:bg-[#4989ae]"
               >
                 Reservasi Layanan
                 <ArrowRight size={20} />
@@ -46,7 +46,7 @@ export function Hero() {
           <div className="w-full bg-red-500"></div>
           <div
             id="BIDAN_1"
-            className="relative h-[350px] w-[85%] md:h-[350px] md:max-w-[400px]"
+            className="animate-fade-in-right relative h-[350px] w-[85%] duration-1000 md:h-[350px] md:max-w-[400px]"
           >
             <Image
               src={Bidan01}
@@ -71,7 +71,7 @@ export function Hero() {
           </div>
           <div
             id="BIDAN_2"
-            className="relative h-[350px] w-[85%] md:-top-32 md:-mb-32 md:h-[350px] md:max-w-[400px]"
+            className="animate-fade-in-left relative h-[350px] w-[85%] duration-1000 md:-top-32 md:-mb-32 md:h-[350px] md:max-w-[400px]"
           >
             <Image
               src={Bidan02}
@@ -97,9 +97,9 @@ export function Hero() {
           <div className="w-full bg-red-500"></div>
         </div>
         <Link
-          href="https://www.instagram.com/bidan.nina"
+          href="https://wa.me/6287716254614"
           id="WHATSAPP_BUTTON"
-          className="fixed bottom-8 right-4 z-[80]"
+          className="animate-fade-in-bottom duration-2000 fixed bottom-8 right-4 z-[80]"
         >
           <Image src={WhatsApp} width={64} height={64} alt="WhatsApp" />
         </Link>

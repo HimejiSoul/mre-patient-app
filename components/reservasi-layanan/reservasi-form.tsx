@@ -131,7 +131,7 @@ export default function ReservasiForm() {
                       {field.value === 'Imunisasi' && (
                         <Alert
                           variant="warning"
-                          className="animate-fade-in-translate !mt-2 flex items-center justify-center"
+                          className="animate-fade-in-top !mt-2 flex items-center justify-center duration-200"
                         >
                           <AlertTriangle size={20} strokeWidth={1.5} />
                           <p className="w-full text-sm">
