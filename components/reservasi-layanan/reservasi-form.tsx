@@ -8,6 +8,7 @@ import { Button } from '@/components/ui/button';
 import {
   Form,
   FormControl,
+  FormDescription,
   FormField,
   FormItem,
   FormLabel,
@@ -33,8 +34,6 @@ import {
   SelectTrigger,
   SelectValue,
 } from '@/components/ui/select';
-import Image from 'next/image';
-import HeaderImg from '@/public/appointment-doctor.jpg';
 
 const FormSchema = z.object({
   nama: z.string({
@@ -148,8 +147,8 @@ export default function ReservasiForm() {
               <Row>
                 <InputField
                   name="nama"
-                  placeholder="Nama Lengkap"
-                  label="Nama"
+                  placeholder="John Doe"
+                  label="Nama Lengkap"
                   className="col-span-12"
                   form={form}
                 />
@@ -157,8 +156,8 @@ export default function ReservasiForm() {
               <Row>
                 <InputField
                   name="noHP"
-                  placeholder="Nomor HP"
-                  label="No. HP"
+                  placeholder="081234567890"
+                  label="Nomor Whatsapp"
                   className="col-span-12"
                   form={form}
                   type="number"
@@ -209,6 +208,12 @@ export default function ReservasiForm() {
                     <>Lakukan Reservasi</>
                   )}
                 </Button>
+                {isVerified && (
+                  <FormDescription className="mt-2">
+                    Kami akan mengirimkan pesan melalui Whatsapp Anda setelah
+                    reservasi berhasil dilakukan.
+                  </FormDescription>
+                )}
               </CardFooter>
             </FormWrapper>
           </Card>
