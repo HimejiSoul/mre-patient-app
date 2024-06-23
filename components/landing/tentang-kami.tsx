@@ -6,9 +6,9 @@ import Link from 'next/link';
 export function TentangKami() {
   return (
     <section className="static h-fit bg-white">
-      <div className="container p-8 pb-32 md:flex md:gap-32 md:py-32">
+      <div className="container p-8 pb-32 md:flex md:gap-16 md:py-32 xl:gap-32">
         <div id="IMAGE" className="flex w-full basis-1/4 justify-center">
-          <div className="relative h-[350px] w-[85%] md:h-[400px] md:w-[400px]">
+          <div className="relative h-[350px] w-[85%] md:h-[300px] md:w-[300px] lg:h-[400px] lg:w-[400px]">
             <Image
               src={TentangKamiImg}
               alt="Tentang Kami"
@@ -43,13 +43,11 @@ export function TentangKami() {
             pengembangan berkelanjutan.
           </p>
           <div className="mt-6 flex w-full justify-end md:justify-start">
-            <Link href="/tentang-kami">
-              <button
-                id="reservasi-button"
-                className="flex items-center justify-center gap-2 rounded-full bg-[#e58bac] px-4 py-2 font-medium text-white"
-              >
-                Lihat Selengkapnya
-              </button>
+            <Link
+              href="/tentang-kami"
+              className="flex items-center justify-center rounded-full bg-[#e58bac] px-4 py-2 font-medium text-white duration-200 hover:bg-[#e58bac]/80"
+            >
+              Lihat Selengkapnya
             </Link>
           </div>
         </div>
