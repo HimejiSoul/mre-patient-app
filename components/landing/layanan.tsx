@@ -12,6 +12,7 @@ import periksaKehamilanImg from '@/public/layanan/periksa-kehamilan.png';
 import nifasImg from '@/public/layanan/nifas.png';
 import layananIbuImg from '@/public/layanan/layanan-ibu.png';
 import layananAnakImg from '@/public/layanan/layanan-anak.png';
+import { Reveal } from '../reveal';
 
 const layanan = [
   {
@@ -99,11 +100,11 @@ export function Layanan() {
 
 function Title() {
   return (
-    <h1
+    <Reveal
       className={`${urbanist.className} text-center text-3xl font-bold text-[#393939] md:text-4xl`}
     >
       Layanan Bidan <span className="text-[#e58bac]">Nina Nurlayina</span>
-    </h1>
+    </Reveal>
   );
 }
 
@@ -119,34 +120,36 @@ function MobileView({
   handleDecrement: () => void;
 }) {
   return (
-    <ul
-      id="MOBILE_COMPONENT"
-      className="my-4 flex gap-2 rounded-full bg-[#c9e5f5] p-2 lg:hidden"
-    >
-      <button
-        disabled={indexLayanan === 0 ? true : false}
-        className="rounded-full p-2"
-        onClick={() => handleDecrement()}
+    <Reveal>
+      <ul
+        id="MOBILE_COMPONENT"
+        className="my-4 flex gap-2 rounded-full bg-[#c9e5f5] p-2 lg:hidden"
       >
-        <ChevronLeft
-          size={20}
-          color={indexLayanan === 0 ? '#c7c7c7' : '#60b7eb'}
-        />
-      </button>
-      <li className="flex grow items-center justify-center whitespace-nowrap rounded-full bg-[#60b7eb] p-2 text-white">
-        {layanan[indexLayanan].title}
-      </li>
-      <button
-        disabled={indexLayanan === maxIndex ? true : false}
-        className="rounded-full p-2"
-        onClick={() => handleIncrement()}
-      >
-        <ChevronRight
-          size={20}
-          color={indexLayanan === maxIndex ? '#c7c7c7' : '#60b7eb'}
-        />
-      </button>
-    </ul>
+        <button
+          disabled={indexLayanan === 0 ? true : false}
+          className="rounded-full p-2"
+          onClick={() => handleDecrement()}
+        >
+          <ChevronLeft
+            size={20}
+            color={indexLayanan === 0 ? '#c7c7c7' : '#60b7eb'}
+          />
+        </button>
+        <li className="flex grow items-center justify-center whitespace-nowrap rounded-full bg-[#60b7eb] p-2 text-white">
+          {layanan[indexLayanan].title}
+        </li>
+        <button
+          disabled={indexLayanan === maxIndex ? true : false}
+          className="rounded-full p-2"
+          onClick={() => handleIncrement()}
+        >
+          <ChevronRight
+            size={20}
+            color={indexLayanan === maxIndex ? '#c7c7c7' : '#60b7eb'}
+          />
+        </button>
+      </ul>
+    </Reveal>
   );
 }
 
@@ -158,31 +161,33 @@ function WebView({
   setIndexLayanan: any;
 }) {
   return (
-    <ul
-      id="WEB_COMPONENT"
-      className="my-8 hidden justify-evenly gap-2 rounded-full bg-[#c9e5f5] p-2 lg:flex"
-    >
-      {layanan.map((item, i) => (
-        <li
-          key={i}
-          className={`${
-            indexLayanan === i
-              ? 'bg-[#60b7eb] text-white'
-              : 'bg-[#c9e5f5] text-[#60b7eb] hover:bg-[#60b7eb]/20'
-          } flex cursor-pointer items-center justify-center whitespace-nowrap rounded-full p-2 px-6 duration-200`}
-          onClick={() => setIndexLayanan(i)}
-        >
-          {item.title}
-        </li>
-      ))}
-    </ul>
+    <Reveal>
+      <ul
+        id="WEB_COMPONENT"
+        className="my-8 hidden justify-evenly gap-2 rounded-full bg-[#c9e5f5] p-2 lg:flex"
+      >
+        {layanan.map((item, i) => (
+          <li
+            key={i}
+            className={`${
+              indexLayanan === i
+                ? 'bg-[#60b7eb] text-white'
+                : 'bg-[#c9e5f5] text-[#60b7eb] hover:bg-[#60b7eb]/20'
+            } flex cursor-pointer items-center justify-center whitespace-nowrap rounded-full p-2 px-6 duration-200`}
+            onClick={() => setIndexLayanan(i)}
+          >
+            {item.title}
+          </li>
+        ))}
+      </ul>
+    </Reveal>
   );
 }
 
 function LayananContent({ indexLayanan }: { indexLayanan: number }) {
   return (
     <div className="lg:flex lg:gap-16">
-      <div
+      <Reveal
         id="IMAGE"
         className="flex w-full justify-center md:order-last lg:w-1/2"
       >
@@ -194,8 +199,8 @@ function LayananContent({ indexLayanan }: { indexLayanan: number }) {
             className="z-20 object-contain"
           />
         </div>
-      </div>
-      <div className="lg:w-1/2">
+      </Reveal>
+      <Reveal className="lg:w-1/2">
         <h1
           className={`${urbanist.className} text-3xl font-bold text-[#393939]`}
         >
@@ -213,7 +218,7 @@ function LayananContent({ indexLayanan }: { indexLayanan: number }) {
             <ArrowRight size={20} className="h-full" />
           </Link>
         </div>
-      </div>
+      </Reveal>
     </div>
   );
 }
