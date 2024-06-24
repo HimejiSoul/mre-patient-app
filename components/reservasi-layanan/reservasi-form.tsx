@@ -24,11 +24,13 @@ const FormSchema = z.object({
   nama: z.string({
     required_error: 'Harap Diisi',
   }),
-  noHP: z.coerce.number({
-    required_error: 'Harap Diisi',
-    invalid_type_error: 'Harap Diisi',
-  }),
-  layanan: z.string({
+  noHP: z.coerce
+    .number({
+      required_error: 'Harap Diisi',
+      invalid_type_error: 'Harap Diisi',
+    })
+    .transform((data) => String(data)),
+  id_layanan: z.string({
     required_error: 'Harap Diisi',
   }),
   hariReservasi: z
@@ -41,7 +43,11 @@ const FormSchema = z.object({
 });
 
 const ENUM_VALUES = {
-  layanan: ['Keluarga Berencana', 'Periksa Kehamilan', 'Imunisasi'],
+  layanan: [
+    ['Keluarga Berencana', '0'],
+    ['Periksa Kehamilan', '1'],
+    ['Imunisasi', '2'],
+  ],
   waktuTersedia: ['08.00-12.30', '15.30-20.30'],
 };
 
@@ -112,16 +118,14 @@ export default function ReservasiForm() {
               </Row>
               <Row>
                 <InputField
-                  name="layanan"
+                  name="id_layanan"
                   form={form}
                   placeholder="Pilih Layanan..."
                   type="select"
-                  data={ENUM_VALUES.layanan
-                    .filter((data) => data !== '')
-                    .map((data) => ({
-                      value: data,
-                      label: data,
-                    }))}
+                  data={ENUM_VALUES.layanan.map((data) => ({
+                    value: data[1], // ID value
+                    label: data[0], // Service name
+                  }))}
                   label="Pilih Layanan"
                   className="col-span-12"
                 />

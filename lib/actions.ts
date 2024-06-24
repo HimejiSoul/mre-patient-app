@@ -34,11 +34,10 @@ export type State = {
 };
 
 export async function createReservasi(formData: FormData) {
-  const reservasiData = { data: formData };
-  const apiEndpoint = `${process.env.API_ENDPOINT}/reservasi/reservasi`;
+  const apiEndpoint = `${process.env.API_ENDPOINT}/api/reservasi`;
   try {
-    const response = await axios.post(apiEndpoint, reservasiData);
-    console.log(reservasiData);
+    const response = await axios.post(apiEndpoint, formData);
+    console.log(formData);
     console.log(response.data);
   } catch (error) {
     console.error('Error:', error);
