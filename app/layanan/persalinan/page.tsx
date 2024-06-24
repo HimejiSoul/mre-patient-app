@@ -18,7 +18,7 @@ export default function Page() {
         COMING SOON
       </h1>
       <h2 className="text-center text-sm text-slate-500 md:text-lg">
-        Tentang Kami page is currently under development.
+        Pesalinan page is currently under development.
       </h2>
       <Link
         href={'/'}

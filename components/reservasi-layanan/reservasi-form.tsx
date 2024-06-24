@@ -1,12 +1,19 @@
 'use client';
 
-import { PlusIcon } from '@heroicons/react/24/outline';
-import { useFormStatus } from 'react-dom';
+import { AlertTriangle } from 'lucide-react';
 import { createReservasi, verifyCaptcha } from '@/lib/actions';
 import { useForm } from 'react-hook-form';
 import { z } from 'zod';
 import { Button } from '@/components/ui/button';
-import { Form } from '@/components/ui/form';
+import {
+  Form,
+  FormControl,
+  FormDescription,
+  FormField,
+  FormItem,
+  FormLabel,
+  FormMessage,
+} from '@/components/ui/form';
 
 import { Card, CardFooter } from '@/components/ui/card';
 import {
@@ -19,18 +26,24 @@ import { zodResolver } from '@hookform/resolvers/zod';
 import ReCAPTCHA from 'react-google-recaptcha';
 import { useRef, useState } from 'react';
 import { Loader2Icon } from 'lucide-react';
+import { Alert } from '@/components/ui/alert';
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from '@/components/ui/select';
 
 const FormSchema = z.object({
   nama: z.string({
     required_error: 'Harap Diisi',
   }),
-  noHP: z.coerce
-    .number({
-      required_error: 'Harap Diisi',
-      invalid_type_error: 'Harap Diisi',
-    })
-    .transform((data) => String(data)),
-  id_layanan: z.string({
+  noHP: z.coerce.number({
+    required_error: 'Harap Diisi',
+    invalid_type_error: 'Harap Diisi',
+  }),
+  layanan: z.string({
     required_error: 'Harap Diisi',
   }),
   hariReservasi: z
@@ -43,11 +56,7 @@ const FormSchema = z.object({
 });
 
 const ENUM_VALUES = {
-  layanan: [
-    ['Keluarga Berencana', '0'],
-    ['Periksa Kehamilan', '1'],
-    ['Imunisasi', '2'],
-  ],
+  layanan: ['Keluarga Berencana', 'Periksa Kehamilan', 'Imunisasi'],
   waktuTersedia: ['08.00-12.30', '15.30-20.30'],
 };
 
@@ -72,7 +81,7 @@ export default function ReservasiForm() {
   const form = useForm<z.infer<typeof FormSchema>>({
     resolver: zodResolver(FormSchema),
     defaultValues: {
-      // nama: 'Rai Barokah Utari',
+      hariReservasi: new Date(),
     },
   });
 
@@ -82,8 +91,6 @@ export default function ReservasiForm() {
     console.log(data);
   }
 
-  const siteKey = process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY;
-
   return (
     <div className="h-[100dvh] rounded-xl px-4 py-6 ">
       <Form {...form}>
@@ -91,17 +98,57 @@ export default function ReservasiForm() {
           onSubmit={form.handleSubmit(onSubmit)}
           className="flex w-full flex-col items-center"
         >
-          <Card className="w-full max-w-2xl bg-rme-pink-150 px-6 py-8">
+          <Card className="w-full max-w-2xl px-6 py-8">
             <TitleSection
               title="Layanan Reservasi"
               subtitle="Pilih layanan dan waktu reservasi"
             />
             <FormWrapper>
               <Row>
+                <FormField
+                  control={form.control}
+                  name="layanan"
+                  render={({ field }) => (
+                    <FormItem className="col-span-12">
+                      <FormLabel>Layanan</FormLabel>
+                      <Select
+                        onValueChange={field.onChange}
+                        defaultValue={field.value}
+                      >
+                        <FormControl>
+                          <SelectTrigger>
+                            <SelectValue placeholder="Pilih Layanan" />
+                          </SelectTrigger>
+                        </FormControl>
+                        <SelectContent>
+                          {ENUM_VALUES.layanan.map((layanan, index) => (
+                            <SelectItem key={index} value={layanan}>
+                              {layanan}
+                            </SelectItem>
+                          ))}
+                        </SelectContent>
+                      </Select>
+                      <FormMessage />
+                      {field.value === 'Imunisasi' && (
+                        <Alert
+                          variant="warning"
+                          className="!mt-2 flex animate-fade-in-top items-center justify-center duration-200"
+                        >
+                          <AlertTriangle size={20} strokeWidth={1.5} />
+                          <p className="w-full text-sm">
+                            Layanan Imunisasi hanya tersedia pada hari Rabu.
+                          </p>
+                        </Alert>
+                      )}
+                    </FormItem>
+                  )}
+                />
+              </Row>
+              <Row>
                 <InputField
                   name="nama"
-                  placeholder="Nama Lengkap"
-                  label="Nama"
+                  placeholder="John Doe"
+                  label="Nama Lengkap"
                   className="col-span-12"
                   form={form}
                 />
@@ -109,29 +156,12 @@ export default function ReservasiForm() {
               <Row>
                 <InputField
                   name="noHP"
-                  placeholder="Nomor HP"
-                  label="No. HP"
+                  placeholder="081234567890"
+                  label="Nomor Whatsapp"
                   className="col-span-12"
                   form={form}
                   type="number"
                 />
-              </Row>
-              <Row>
-                <InputField
-                  name="id_layanan"
-                  form={form}
-                  placeholder="Pilih Layanan..."
-                  type="select"
-                  data={ENUM_VALUES.layanan.map((data) => ({
-                    value: data[1], // ID value
-                    label: data[0], // Service name
-                  }))}
-                  label="Pilih Layanan"
-                  className="col-span-12"
-                />
-                <p className="col-span-12 text-xs">
-                  *Imunisasi Khusus Hari Rabu
-                </p>
               </Row>
               <Row>
                 <InputField
@@ -140,8 +170,10 @@ export default function ReservasiForm() {
                   placeholder="Hari Reservasi.."
                   type="date"
                   label="Hari Reservasi"
-                  className="col-span-6"
+                  className="col-span-12"
                 />
+              </Row>
+              <Row>
                 <InputField
                   name="waktuTersedia"
                   form={form}
@@ -154,7 +186,7 @@ export default function ReservasiForm() {
                       label: data,
                     }))}
                   label="Waktu Reservasi"
-                  className="col-span-6"
+                  className="col-span-12"
                 />
               </Row>
               <CardFooter className="flex flex-col items-start p-0">
@@ -164,7 +196,7 @@ export default function ReservasiForm() {
                   onChange={handleCaptchaSubmission}
                 />
                 <Button
-                  className="mt-3 w-fit bg-rme-pink-900 hover:bg-pink-500"
+                  className="mt-3 w-full bg-rme-blue-500 hover:bg-[#60b7eb]"
                   disabled={isLoading || !isVerified}
                 >
                   {isLoading ? (
@@ -176,6 +208,12 @@ export default function ReservasiForm() {
                     <>Lakukan Reservasi</>
                   )}
                 </Button>
+                {isVerified && (
+                  <FormDescription className="mt-2">
+                    Kami akan mengirimkan pesan melalui Whatsapp Anda setelah
+                    reservasi berhasil dilakukan.
+                  </FormDescription>
+                )}
               </CardFooter>
             </FormWrapper>
           </Card>
