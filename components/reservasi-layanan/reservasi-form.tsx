@@ -14,7 +14,7 @@ import {
   FormLabel,
   FormMessage,
 } from '@/components/ui/form';
-
+import { addDays } from 'date-fns';
 import { Card, CardFooter } from '@/components/ui/card';
 import {
   FormWrapper,
@@ -34,16 +34,24 @@ import {
   SelectTrigger,
   SelectValue,
 } from '@/components/ui/select';
+import { useRouter } from 'next/navigation';
+import { toast } from '@/components/ui/use-toast';
 
 const FormSchema = z.object({
   nama: z.string({
     required_error: 'Harap Diisi',
   }),
-  noHP: z.coerce.number({
-    required_error: 'Harap Diisi',
-    invalid_type_error: 'Harap Diisi',
-  }),
-  layanan: z.string({
+  noHP: z.coerce
+    .number({
+      required_error: 'Harap Diisi',
+      invalid_type_error: 'Harap Diisi',
+    })
+    .transform((arg) => {
+      const phoneString = String(arg);
+      // Add one leading zero if the number doesn't already have one
+      return phoneString.startsWith('0') ? phoneString : '0' + phoneString;
+    }),
+  id_layanan: z.string({
     required_error: 'Harap Diisi',
   }),
   hariReservasi: z
@@ -61,6 +69,7 @@ const ENUM_VALUES = {
 };
 
 export default function ReservasiForm() {
+  const router = useRouter();
   const recaptchaRef = useRef<ReCAPTCHA>(null);
   const [isVerified, setIsverified] = useState<boolean>(false);
   const [isLoading, setIsLoading] = useState<boolean>(false);
@@ -81,14 +90,24 @@ export default function ReservasiForm() {
   const form = useForm<z.infer<typeof FormSchema>>({
     resolver: zodResolver(FormSchema),
     defaultValues: {
-      hariReservasi: new Date(),
+      hariReservasi: addDays(new Date(), 1),
     },
   });
 
-  function onSubmit(data: any) {
+  async function onSubmit(data: any) {
     setIsLoading(true);
-    createReservasi(data);
-    console.log(data);
+    try {
+      await createReservasi(data);
+      router.push('/');
+      toast({
+        title: `Berhasil Membuat Reservasi`,
+      });
+    } catch (error) {
+      toast({
+        title: `${error}`,
+      });
+      setIsLoading(false);
+    }
   }
 
   return (
@@ -107,7 +126,7 @@ export default function ReservasiForm() {
               <Row>
                 <FormField
                   control={form.control}
-                  name="layanan"
+                  name="id_layanan"
                   render={({ field }) => (
                     <FormItem className="col-span-12">
                       <FormLabel>Layanan</FormLabel>

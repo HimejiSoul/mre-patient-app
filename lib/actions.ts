@@ -33,16 +33,35 @@ export type State = {
   message?: string | null;
 };
 
-export async function createReservasi(formData: FormData) {
+export async function createReservasi(formData: any) {
   const apiEndpoint = `${process.env.API_ENDPOINT}/api/reservasi`;
+
+  // Transform the id_layanan value
+  const layananMapping: any = {
+    'Keluarga Berencana': '0',
+    'Periksa Kehamilan': '1',
+    Imunisasi: '2',
+  };
+
+  if (formData.id_layanan in layananMapping) {
+    formData.id_layanan = layananMapping[formData.id_layanan];
+  }
+
+  console.log(formData);
   try {
     const response = await axios.post(apiEndpoint, formData);
-    console.log(formData);
     console.log(response.data);
   } catch (error) {
-    console.error('Error:', error);
+    if (axios.isAxiosError(error)) {
+      const errorMessage =
+        error.response?.data?.message || 'Gagal Membuat Reservasi';
+      console.error(errorMessage);
+      throw new Error(errorMessage);
+    } else {
+      console.error('Unexpected error', error);
+      throw new Error('An unexpected error occurred');
+    }
   }
-  redirect('/');
 }
 
 export async function editKBPatient(formData: FormData, id_pasien: any) {
