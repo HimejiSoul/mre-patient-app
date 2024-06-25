@@ -111,7 +111,7 @@ export default function ReservasiForm() {
   }
 
   return (
-    <div className="h-[100dvh] rounded-xl px-4 py-6 ">
+    <div className="h-fit min-h-[100dvh] rounded-xl px-4 py-6 ">
       <Form {...form}>
         <form
           onSubmit={form.handleSubmit(onSubmit)}
