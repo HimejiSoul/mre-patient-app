@@ -1,0 +1,9 @@
+# Block all crawlers for /accounts
+User-agent: *
+Disallow: /reservasi-layanan
+
+# Allow all crawlers
+User-agent: *
+Allow: /
+
+Sitemap: https://www.ninasys.vercel.app/sitemap.xml`
