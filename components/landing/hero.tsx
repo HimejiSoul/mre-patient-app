@@ -1,10 +1,10 @@
 import { urbanist } from '@/components/fonts';
 import { ArrowRight } from 'lucide-react';
-import WhatsApp from '@/public/WhatsApp_icon.png.webp';
 import Image from 'next/image';
 import Bidan01 from '@/public/a-black-female-doctor-wearing-a-white-coat-free-png.jpg';
 import Bidan02 from '@/public/nurse-hijab-portrait-hospital.png';
 import Link from 'next/link';
+import { WhatsappButton } from '@/components/whatsapp-button';
 
 export function Hero() {
   return (
@@ -12,7 +12,7 @@ export function Hero() {
       <div className="container relative p-8 pb-16 md:flex md:gap-16">
         <Headline />
         <HeroImages />
-        <WhatssAppIcon />
+        <WhatsappButton />
       </div>
     </section>
   );
@@ -105,17 +105,5 @@ function HeroImages() {
         </div>
       </div>
     </div>
-  );
-}
-
-function WhatssAppIcon() {
-  return (
-    <Link
-      id="WHATSAPP_ICON"
-      href="https://wa.me/6287716254614"
-      className="fixed bottom-8 right-4 z-[80] animate-fade-in-bottom duration-2000"
-    >
-      <Image src={WhatsApp} width={64} height={64} alt="WhatsApp" />
-    </Link>
   );
 }
