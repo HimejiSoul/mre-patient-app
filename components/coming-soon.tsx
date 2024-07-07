@@ -1,6 +1,6 @@
 import { urbanist } from '@/components/fonts';
 import Image from 'next/image';
-import devImage from '@/public/development-image.jpg';
+import devImage from '@/public/other/development-image.jpg';
 import Link from 'next/link';
 
 export default function ComingSoon({ pageName }: { pageName: string }) {

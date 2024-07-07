@@ -1,4 +1,4 @@
-import WhatsApp from '@/public/WhatsApp_icon.png.webp';
+import WhatsApp from '@/public/whatsapp-icon.webp';
 import Image from 'next/image';
 import Link from 'next/link';
 

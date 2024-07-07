@@ -1,5 +1,5 @@
 import Image from 'next/image';
-import NotFoundImage from '@/public/404-NotFound.png';
+import NotFoundImage from '@/public/other/404-NotFound.png';
 import Link from 'next/link';
 
 export default function NotFound() {

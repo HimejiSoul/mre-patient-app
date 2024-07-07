@@ -1,6 +1,6 @@
-import { Hero } from '@/components/landing/hero';
-import { Layanan } from '@/components/landing/layanan';
-import { TentangKami } from '@/components/landing/tentang-kami';
+import { Hero } from '@/components/beranda/hero';
+import { Layanan } from '@/components/beranda/layanan';
+import { TentangKami } from '@/components/beranda/tentang-kami';
 
 export default function Page() {
   return (

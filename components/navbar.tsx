@@ -93,8 +93,7 @@ export function Navbar() {
           />
         </Link>
         <MobileNav />
-        <NavbarToto />
-        {/* <WebNav /> */}
+        <WebNav />
       </div>
     </nav>
   );
@@ -183,11 +182,11 @@ function MobileNav() {
   );
 }
 
-export function NavbarToto() {
+export function WebNav() {
   const path = usePathname();
   return (
     <>
-      <NavigationMenu>
+      <NavigationMenu className="hidden md:block">
         <NavigationMenuList>
           <NavigationMenuItem>
             <Link href="/" legacyBehavior passHref>

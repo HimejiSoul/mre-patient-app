@@ -1,6 +1,6 @@
 import { urbanist } from '@/components/fonts';
 import Image from 'next/image';
-import TentangKamiImg from '@/public/beranda-tentang-kami.png';
+import TentangKamiImg from '@/public/beranda/beranda-tentang-kami.png';
 import Link from 'next/link';
 import { Reveal } from '../reveal';
 

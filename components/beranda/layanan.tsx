@@ -5,13 +5,13 @@ import Image from 'next/image';
 import { ArrowRight, ChevronLeft, ChevronRight } from 'lucide-react';
 import Link from 'next/link';
 import { useState } from 'react';
-import persalinaniImg from '@/public/layanan/persalinan.png';
-import imunisasiImg from '@/public/layanan/imunisasi.png';
-import keluargaBerencanaiImg from '@/public/layanan/keluarga-berencana.png';
-import periksaKehamilanImg from '@/public/layanan/periksa-kehamilan.png';
-import nifasImg from '@/public/layanan/nifas.png';
-import layananIbuImg from '@/public/layanan/layanan-ibu.png';
-import layananAnakImg from '@/public/layanan/layanan-anak.png';
+import persalinaniImg from '@/public/beranda/layanan/persalinan.png';
+import imunisasiImg from '@/public/beranda/layanan/imunisasi.png';
+import keluargaBerencanaiImg from '@/public/beranda/layanan/keluarga-berencana.png';
+import periksaKehamilanImg from '@/public/beranda/layanan/periksa-kehamilan.png';
+import nifasImg from '@/public/beranda/layanan/nifas.png';
+import layananIbuImg from '@/public/beranda/layanan/layanan-ibu.png';
+import layananAnakImg from '@/public/beranda/layanan/layanan-anak.png';
 import { Reveal } from '../reveal';
 
 const layanan = [
