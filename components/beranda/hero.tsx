@@ -1,8 +1,8 @@
 import { urbanist } from '@/components/fonts';
 import { ArrowRight } from 'lucide-react';
 import Image from 'next/image';
-import Bidan01 from '@/public/a-black-female-doctor-wearing-a-white-coat-free-png.jpg';
-import Bidan02 from '@/public/nurse-hijab-portrait-hospital.png';
+import Bidan01 from '@/public/beranda/a-black-female-doctor-wearing-a-white-coat-free-png.jpg';
+import Bidan02 from '@/public/beranda/nurse-hijab-portrait-hospital.png';
 import Link from 'next/link';
 import { WhatsappButton } from '@/components/whatsapp-button';
 

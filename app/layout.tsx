@@ -1,7 +1,7 @@
 import '@/components/global.css';
 import { Metadata } from 'next';
-import { Navbar } from '@/components/landing/navbar';
-import { Footer } from '@/components/landing/footer';
+import { Navbar } from '@/components/navbar';
+import { Footer } from '@/components/footer';
 import { inter } from '@/components/fonts';
 import { Toaster } from '@/components/ui/toaster';
 import { Analytics } from '@vercel/analytics/react';
