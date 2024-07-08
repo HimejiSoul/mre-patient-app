@@ -13,6 +13,8 @@ import nifasImg from '@/public/beranda/layanan/nifas.png';
 import layananIbuImg from '@/public/beranda/layanan/layanan-ibu.png';
 import layananAnakImg from '@/public/beranda/layanan/layanan-anak.png';
 import { Reveal } from '../reveal';
+import { H2, P } from '@/components/typography';
+import { Background } from '@/components/page-wrapper';
 
 const layanan = [
   {
@@ -79,7 +81,7 @@ export function Layanan() {
   };
 
   return (
-    <section className="static h-fit bg-[#eff6ff]">
+    <Background className="bg-[#eff6ff]">
       <div className="container p-8 pb-32">
         <Title />
         <MobileView
@@ -94,7 +96,7 @@ export function Layanan() {
         />
         <LayananContent indexLayanan={indexLayanan} />
       </div>
-    </section>
+    </Background>
   );
 }
 
@@ -201,14 +203,10 @@ function LayananContent({ indexLayanan }: { indexLayanan: number }) {
         </div>
       </Reveal>
       <Reveal className="lg:w-1/2">
-        <h1
-          className={`${urbanist.className} text-3xl font-bold text-[#393939]`}
-        >
-          {layanan[indexLayanan].title}
-        </h1>
-        <p className="mt-2 animate-fade-in-bottom text-justify text-slate-500 duration-500 md:text-xl">
+        <H2 className="text-[#393939]">{layanan[indexLayanan].title}</H2>
+        <P className="animate-fade-in-bottom">
           {layanan[indexLayanan].description}
-        </p>
+        </P>
         <div className="mt-6 flex w-full justify-end md:justify-start">
           <Link
             href={layanan[indexLayanan].href}

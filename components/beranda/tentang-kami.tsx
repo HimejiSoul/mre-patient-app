@@ -1,17 +1,18 @@
-import { urbanist } from '@/components/fonts';
 import Image from 'next/image';
 import TentangKamiImg from '@/public/beranda/beranda-tentang-kami.png';
 import Link from 'next/link';
 import { Reveal } from '../reveal';
+import { H1, P } from '@/components/typography';
+import { Background } from '@/components/page-wrapper';
 
 export function TentangKami() {
   return (
-    <section className="relative h-fit bg-white">
+    <Background>
       <div className="container flex flex-col place-items-center gap-8 p-8 pb-32 md:flex-row md:gap-16 md:py-32">
         <TentangKamiImage img={TentangKamiImg} />
         <Body />
       </div>
-    </section>
+    </Background>
   );
 }
 
@@ -31,12 +32,8 @@ function TentangKamiImage({ img }: { img: any }) {
 function Body() {
   return (
     <Reveal className="basis-3/4">
-      <h1
-        className={`${urbanist.className} text-3xl font-bold text-[#393939] md:text-4xl`}
-      >
-        Tentang Kami
-      </h1>
-      <p className="mt-2 text-justify text-slate-500 md:text-xl">
+      <H1 className="text-[#393939]">Tentang Kami</H1>
+      <P>
         Tim bidan profesional yang berdedikasi untuk memberikan pelayanan
         kesehatan ibu dan anak yang terbaik. Dengan pengalaman dan keahlian yang
         luas, kami siap mendampingi Anda dalam setiap tahap kehamilan dan
@@ -54,7 +51,7 @@ function Body() {
         ramah, mendukung, dan profesional. Kami berkomitmen untuk terus
         meningkatkan kualitas layanan kami melalui pelatihan dan pengembangan
         berkelanjutan.
-      </p>
+      </P>
       <div className="mt-6 flex w-full justify-end md:justify-start">
         <Link
           href="/tentang-kami"

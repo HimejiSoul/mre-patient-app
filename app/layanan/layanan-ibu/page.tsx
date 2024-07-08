@@ -1,8 +1,6 @@
 import { urbanist } from '@/components/fonts';
 import Image from 'next/image';
 import Link from 'next/link';
-import { HTMLAttributes, ReactNode } from 'react';
-import { cn } from '@/lib/utils';
 import { WhatsappButton } from '@/components/whatsapp-button';
 import {
   Accordion,
@@ -19,6 +17,10 @@ import pijatNifasImage from '@/public/layanan-ibu/pijat-nifas.png';
 import bidanImage from '@/public/layanan-ibu/bidan-1.png';
 import { File, ArrowRight, PhoneCall } from 'lucide-react';
 
+// PAGE LAYOUT
+import { H1, H2, P } from '@/components/typography';
+import { Background } from '@/components/page-wrapper';
+
 export default function Page() {
   return (
     <>
@@ -34,89 +36,21 @@ export default function Page() {
   );
 }
 
-function Background({
-  children,
-  className,
-  ...props
-}: HTMLAttributes<HTMLDivElement> & {
-  children: ReactNode;
-}) {
-  return (
-    <div className={cn('h-fit bg-white', className)} {...props}>
-      {children}
-    </div>
-  );
-}
-
-function H1({
-  children,
-  className,
-  ...props
-}: HTMLAttributes<HTMLDivElement> & {
-  children: ReactNode;
-}) {
-  return (
-    <h1
-      className={cn(
-        `${urbanist.className} text-3xl font-bold text-[#60b7eb] md:text-4xl`,
-        className,
-      )}
-      {...props}
-    >
-      {children}
-    </h1>
-  );
-}
-
-function H2({
-  children,
-  className,
-  ...props
-}: HTMLAttributes<HTMLDivElement> & {
-  children: ReactNode;
-}) {
-  return (
-    <h1
-      className={cn(
-        `${urbanist.className} text-2xl font-bold text-[#60b7eb] md:text-3xl`,
-        className,
-      )}
-      {...props}
-    >
-      {children}
-    </h1>
-  );
-}
-
-function P({
-  children,
-  className,
-  ...props
-}: HTMLAttributes<HTMLDivElement> & {
-  children: ReactNode;
-}) {
-  return (
-    <p className={cn('mt-2 text-justify text-slate-500', className)} {...props}>
-      {children}
-    </p>
-  );
-}
-
 function LayananIbu() {
   return (
     <Background className="bg-[#eff6ff]">
       <header className="container flex flex-col place-items-center gap-8 p-8 pb-32 md:flex-row md:gap-16 md:py-32">
         <div className="order-last md:order-first">
           <p
-            className={`${urbanist.className} w-fit animate-fade-in-top rounded-lg bg-white p-2 px-4 text-[#60b7eb] drop-shadow-md duration-2000`}
+            className={`${urbanist.className}  w-fit animate-fade-in-top rounded-lg bg-white p-2 px-4 text-[#60b7eb] drop-shadow-md duration-2000`}
           >
             Layanan Ibu
           </p>
-          <H1 className="mt-2 text-[#393939]">
+          <H1 className="mt-2 animate-fade-in-top text-[#393939] duration-1000">
             Selamat menanti <span className="text-[#60b7eb]">kelahiran</span> si
             kecil, Bun!
           </H1>
-          <P>
+          <P className="animate-fade-in-top duration-1000">
             Pelayanan kesehatan yang optimal dengan bidan profesional yang
             berdedikasi tinggi, siap mendampingi Anda dalam setiap tahap
             perawatan dan kesehatan ibu dan anak.
@@ -126,7 +60,7 @@ function LayananIbu() {
           src={layananIbuImage}
           alt="Hero Section for Tentang Kami Page"
           sizes="100vw"
-          className="h-auto w-[80%] max-w-[500px] object-contain sm:w-[60%] md:w-[40%]"
+          className="h-auto w-[80%] max-w-[500px] animate-fade-in-right object-contain duration-1000 sm:w-[60%] md:w-[40%]"
         />
       </header>
     </Background>
