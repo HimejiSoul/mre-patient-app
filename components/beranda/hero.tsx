@@ -11,7 +11,7 @@ import { Background } from '@/components/page-wrapper';
 export function Hero() {
   return (
     <Background className="bg-[#eff6ff]">
-      <section className="container relative flex flex-col gap-12 p-8 pb-16 md:flex-row md:justify-between">
+      <section className="container relative flex max-h-[900px] flex-col gap-12 p-8 pb-16 md:h-[100dvh] md:flex-row md:justify-between">
         <Headline />
         <HeroImages />
         <WhatsappButton />

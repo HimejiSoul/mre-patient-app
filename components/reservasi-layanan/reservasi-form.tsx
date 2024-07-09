@@ -39,12 +39,12 @@ import { toast } from '@/components/ui/use-toast';
 
 const FormSchema = z.object({
   nama: z.string({
-    required_error: 'Harap Diisi',
+    required_error: 'Nama pasien harap diisi.',
   }),
   noHP: z.coerce
     .number({
-      required_error: 'Harap Diisi',
-      invalid_type_error: 'Harap Diisi',
+      required_error: 'Nomor handphone harap diisi.',
+      invalid_type_error: 'Nomor handphone harap diisi.',
     })
     .transform((arg) => {
       const phoneString = String(arg);
@@ -52,14 +52,14 @@ const FormSchema = z.object({
       return phoneString.startsWith('0') ? phoneString : '0' + phoneString;
     }),
   id_layanan: z.string({
-    required_error: 'Harap Diisi',
+    required_error: 'Layanan perlu diisi.',
   }),
   hariReservasi: z
     .string()
     .or(z.date())
     .transform((arg) => new Date(arg)),
   waktuTersedia: z.string({
-    required_error: 'Harap Diisi',
+    required_error: 'Waktu reservasi perlu diisi.',
   }),
 });
 
@@ -97,8 +97,10 @@ export default function ReservasiForm() {
   async function onSubmit(data: any) {
     setIsLoading(true);
     try {
+      // TODO: JUST FOR BETA TESTING
       await createReservasi(data);
-      router.push('/');
+      router.push('https://forms.gle/LpxEgqWSLbZp7wSD8');
+      // router.push('/');
       toast({
         title: `Berhasil Membuat Reservasi`,
       });
@@ -180,6 +182,8 @@ export default function ReservasiForm() {
                   className="col-span-12"
                   form={form}
                   type="number"
+                  // FIXME: Remove this after Beta Testing
+                  description="Kami tidak akan menyimpan nomor Anda untuk pengujian ini ✌️"
                 />
               </Row>
               <Row>
@@ -228,10 +232,15 @@ export default function ReservasiForm() {
                   )}
                 </Button>
                 {isVerified && (
+                  // FIXME:
                   <FormDescription className="mt-2">
-                    Kami akan mengirimkan pesan melalui Whatsapp Anda setelah
-                    reservasi berhasil dilakukan.
+                    Anda akan diarahkan ke Google Form untuk mengisi kuesioner
+                    setelah reservasi berhasil dilakukan.
                   </FormDescription>
+                  // <FormDescription className="mt-2">
+                  //   Kami akan mengirimkan pesan melalui Whatsapp Anda setelah
+                  //   reservasi berhasil dilakukan.
+                  // </FormDescription>
                 )}
               </CardFooter>
             </FormWrapper>

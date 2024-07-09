@@ -197,7 +197,7 @@ export function WebNav() {
                     '/' === path
                       ? 'bg-sky-50  text-rme-blue-500 hover:bg-rme-blue-500/10'
                       : 'text-slate-500 hover:bg-slate-500/10'
-                  } rounded-lg px-4 py-2 text-center font-normal transition duration-300 ease-out`)
+                  } rounded-lg px-4 py-3 text-center font-normal transition duration-300 ease-out`)
                 }
               >
                 Beranda
@@ -210,7 +210,7 @@ export function WebNav() {
                 path.startsWith('/layanan')
                   ? 'bg-sky-50 text-rme-blue-500 hover:bg-rme-blue-500/10'
                   : 'text-slate-500 hover:bg-slate-500/10'
-              } rounded-lg px-4 py-2 text-center font-normal transition duration-300 ease-out`}
+              } rounded-lg px-4 py-3 text-center text-base font-normal transition duration-300 ease-out`}
             >
               Layanan
             </NavigationMenuTrigger>
@@ -235,7 +235,7 @@ export function WebNav() {
                     '/tentang-kami' === path
                       ? 'bg-sky-50 text-rme-blue-500 hover:bg-rme-blue-500/10'
                       : 'text-slate-500 hover:bg-slate-500/10'
-                  } rounded-lg px-4 py-2 text-center font-normal transition duration-300 ease-out`)
+                  } rounded-lg px-4 py-3 text-center font-normal transition duration-300 ease-out`)
                 }
               >
                 Tentang Kami
@@ -250,7 +250,7 @@ export function WebNav() {
             '/reservasi-layanan' === path
               ? 'bg-[#60b7eb] text-white hover:bg-[#60b7eb]/90'
               : 'text-[#60b7eb] hover:bg-rme-blue-500/10'
-          } w-fit rounded-full border border-[#60b7eb] px-4 py-2 text-center font-semibold transition duration-300 ease-out`}
+          } w-fit rounded-full border border-[#60b7eb] px-4 py-2 text-center transition duration-300 ease-out`}
           href={'/reservasi-layanan'}
         >
           Lakukan Reservasi
