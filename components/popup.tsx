@@ -13,9 +13,11 @@ import { useEffect, useState } from 'react';
 import { Button } from './ui/button';
 import Image from 'next/image';
 import helperGIF from '@/public/helper.gif';
+import { AlertCircle, X } from 'lucide-react';
 
 export function BetaDialog() {
   const [showDialog, setShowDialog] = useState(false);
+  const [close, setClose] = useState(false);
 
   useEffect(() => {
     const dialogShown = sessionStorage.getItem('dialogShown');
@@ -27,7 +29,7 @@ export function BetaDialog() {
 
   return (
     <>
-      {showDialog && (
+      {showDialog ? (
         <Dialog defaultOpen>
           <DialogContent>
             <DialogHeader>
@@ -102,7 +104,24 @@ export function BetaDialog() {
             </DialogFooter>
           </DialogContent>
         </Dialog>
-      )}
+      ) : !close ? (
+        <div className="flex w-full justify-center gap-2 bg-[#def2ff] px-4 py-2 text-rme-blue-500 [&>svg]:text-rme-blue-500">
+          <AlertCircle size={20} strokeWidth={1.5} />
+          <p className="w-full text-sm">
+            Telah menelusuri halaman kami? Isi kuesioner{' '}
+            <a
+              className="underline"
+              target="_blank"
+              href="https://forms.gle/LpxEgqWSLbZp7wSD8"
+            >
+              disini.
+            </a>
+          </p>
+          <button onClick={() => setClose(!close)}>
+            <X className="h-4 w-4" />
+          </button>
+        </div>
+      ) : null}
     </>
   );
 }

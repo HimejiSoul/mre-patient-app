@@ -6,6 +6,7 @@ import { inter } from '@/components/fonts';
 import { Toaster } from '@/components/ui/toaster';
 import { Analytics } from '@vercel/analytics/react';
 import { SpeedInsights } from '@vercel/speed-insights/next';
+import { BetaDialog } from '@/components/popup';
 
 export const metadata: Metadata = {
   title: {
@@ -25,6 +26,7 @@ export default async function RootLayout({
       <body className={`${inter.className} antialiased `}>
         <Analytics />
         <SpeedInsights />
+        <BetaDialog />
         <Navbar />
         {children}
         <Footer />
