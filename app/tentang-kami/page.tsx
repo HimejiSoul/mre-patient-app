@@ -29,7 +29,7 @@ function TentangKami() {
       <header className="container flex flex-col place-items-center gap-8 p-8 pb-32 md:flex-row md:gap-16 md:pt-16">
         <div className="order-last md:order-first md:w-1/2">
           <H1 className="animate-fade-in-top duration-1000">Tentang Kami</H1>
-          <P className="animate-fade-in-bottom duration-1000">
+          <P className="animate-fade-in-bottom text-start duration-1000">
             Selamat datang di Ninasys, platform terdepan yang menyediakan solusi
             reservasi rekam medis secara online. Kami memahami pentingnya akses
             yang mudah dan cepat terhadap informasi kesehatan Anda. Dengan

@@ -1,26 +1,22 @@
 import { Separator } from '@/components/ui/separator';
 import Link from 'next/link';
-import { urbanist } from '@/components/fonts';
+import { P, H3 } from './typography';
 
 export function Footer() {
   return (
     <footer className="z-[100] h-fit bg-[#393939] text-white">
       <div className="container flex w-full flex-col gap-8 p-8 md:flex-row md:gap-16">
         <div id="BIDAN_NINA" className="basis-1/3">
-          <h1 className={`${urbanist.className} text-xl font-bold md:text-2xl`}>
-            Bidan Nina Nurlayina
-          </h1>
-          <p className="mt-2 text-sm font-normal md:text-base">
+          <H3 className="text-white">Bidan Nina Nurlayina</H3>
+          <P className="text-start text-white">
             bidan profesional dengan dedikasi tinggi dan pengalaman luas dalam
             bidang kesehatan ibu dan anak. Dengan pendekatan yang ramah dan
             penuh perhatian, Bidan Nina siap memberikan perawatan terbaik selama
             kehamilan, persalinan, dan masa pasca melahirkan.
-          </p>
+          </P>
         </div>
         <div id="USEFUL_LINKS" className="basis-1/3">
-          <h1 className={`${urbanist.className} text-xl font-bold md:text-2xl`}>
-            Useful Links
-          </h1>
+          <H3 className="text-white">Useful Links</H3>
           <ul className="mt-2 flex flex-col gap-2 text-sm md:text-base">
             <Link className="duration-200 hover:underline" href="/">
               Beranda
@@ -35,9 +31,7 @@ export function Footer() {
           </ul>
         </div>
         <div id="ADDRESS" className="basis-1/3">
-          <h1 className={`${urbanist.className} text-xl font-bold md:text-2xl`}>
-            Alamat
-          </h1>
+          <H3 className="text-white">Alamat</H3>
           <div className="mt-2 w-full overflow-clip rounded-lg bg-white">
             <iframe
               src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3966.389375777641!2d106.780236!3d-6.212268!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e69f6d19f4cfd63%3A0x4aa154564ff59c49!2sBidan%20Ny%20Imas!5e0!3m2!1sen!2sid!4v1716654372331!5m2!1sen!2sid"
