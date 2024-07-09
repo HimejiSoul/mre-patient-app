@@ -50,7 +50,7 @@ function LayananIbu() {
             Selamat menanti <span className="text-[#60b7eb]">kelahiran</span> si
             kecil, Bun!
           </H1>
-          <P className="animate-fade-in-top duration-1000">
+          <P className="animate-fade-in-top text-start duration-1000">
             Pelayanan kesehatan yang optimal dengan bidan profesional yang
             berdedikasi tinggi, siap mendampingi Anda dalam setiap tahap
             perawatan dan kesehatan ibu dan anak.
