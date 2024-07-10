@@ -9,16 +9,16 @@ import {
   AccordionTrigger,
 } from '@/components/ui/accordion';
 
-import layananIbuImage from '@/public/layanan-ibu/hero.png';
+import layananImage from '@/public/layanan-ibu/hero.png';
 import pijatKehamilanImage from '@/public/layanan-ibu/pijat-kehamilan.png';
 import pijatLaktasiImage from '@/public/layanan-ibu/pijat-laktasi.png';
 import pijatOksitosinImage from '@/public/layanan-ibu/pijat-oksitosin.png';
 import pijatNifasImage from '@/public/layanan-ibu/pijat-nifas.png';
 import bidanImage from '@/public/layanan-ibu/bidan-1.png';
-import { File, ArrowRight, PhoneCall } from 'lucide-react';
+import { File, PhoneCall } from 'lucide-react';
 
 // PAGE LAYOUT
-import { H1, H2, P } from '@/components/typography';
+import { H1, P } from '@/components/typography';
 import { Background } from '@/components/page-wrapper';
 
 export default function Page() {
@@ -57,7 +57,7 @@ function LayananIbu() {
           </P>
         </div>
         <Image
-          src={layananIbuImage}
+          src={layananImage}
           alt="Hero Section for Tentang Kami Page"
           sizes="100vw"
           className="h-auto w-[80%] max-w-[500px] animate-fade-in-right object-contain duration-1000 sm:w-[60%] md:w-[40%]"
@@ -183,69 +183,6 @@ function PijatNifas() {
           <H1 className="mt-2 text-[#393939]">
             Pijat <span className="text-[#60b7eb]">Nifas</span>
           </H1>
-          {/* TODO: Siapa tau masih di pakai :( */}
-          {/* <ul className="grid list-inside list-disc grid-cols-1 marker:text-[#60b7eb]">
-            <li className="flex items-center space-x-3 rtl:space-x-reverse">
-              <svg
-                className="h-3.5 w-3.5 flex-shrink-0 text-[#60b7eb]"
-                aria-hidden="true"
-                xmlns="http://www.w3.org/2000/svg"
-                fill="none"
-                viewBox="0 0 16 12"
-              >
-                <path
-                  stroke="currentColor"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  stroke-width="2"
-                  d="M1 5.917 5.724 10.5 15 1.5"
-                />
-              </svg>
-              <span>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-              </span>
-            </li>
-            <li className="flex items-center space-x-3 rtl:space-x-reverse">
-              <svg
-                className="h-3.5 w-3.5 flex-shrink-0 text-[#60b7eb]"
-                aria-hidden="true"
-                xmlns="http://www.w3.org/2000/svg"
-                fill="none"
-                viewBox="0 0 16 12"
-              >
-                <path
-                  stroke="currentColor"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  stroke-width="2"
-                  d="M1 5.917 5.724 10.5 15 1.5"
-                />
-              </svg>
-              <span>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-              </span>
-            </li>
-            <li className="flex items-center space-x-3 rtl:space-x-reverse">
-              <svg
-                className="h-3.5 w-3.5 flex-shrink-0 text-[#60b7eb]"
-                aria-hidden="true"
-                xmlns="http://www.w3.org/2000/svg"
-                fill="none"
-                viewBox="0 0 16 12"
-              >
-                <path
-                  stroke="currentColor"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  stroke-width="2"
-                  d="M1 5.917 5.724 10.5 15 1.5"
-                />
-              </svg>
-              <span>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-              </span>
-            </li>
-          </ul> */}
           <P>
             Pijat Nifas l ialah pijat yang dilakukan oleh bidan terlatih untuk
             para Ibu di pada masa setelah melahirkan. Seperti pijat pada
