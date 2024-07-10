@@ -132,7 +132,7 @@ function MobileNav() {
                 <AccordionTrigger className="py-0 font-semibold hover:no-underline">
                   {link.name}
                 </AccordionTrigger>
-                <AccordionContent className="mt-4 pb-0">
+                <AccordionContent className="mt-4 flex flex-col pb-0">
                   {services.map((service, i) => (
                     <SheetClose key={i} asChild>
                       <Link

@@ -119,7 +119,7 @@ function FAQ() {
               className="rounded-lg border bg-white p-2 shadow-sm"
             >
               <AccordionTrigger className="text-start">
-                <File size={20} className="mr-2 min-w-fit" />
+                <File size={20} className="mr-2" />
                 <span className="w-full">{item.title}</span>
               </AccordionTrigger>
               <AccordionContent className="whitespace-pre-line rounded-md bg-slate-100 px-4 py-2">
