@@ -39,7 +39,7 @@ function LayananImunisasi() {
             Layanan Anak
           </p>
           <H1 className="mt-2 animate-fade-in-top text-[#393939] duration-1000">
-            Selamat manjaga si kecil dengan
+            Selamat menjaga si kecil dengan
             <span className="text-[#60b7eb]"> Layanan Anak</span>
           </H1>
           <P className="animate-fade-in-top text-start duration-1000">

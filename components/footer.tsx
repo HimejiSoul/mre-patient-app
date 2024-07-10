@@ -9,14 +9,14 @@ export function Footer() {
         <div id="BIDAN_NINA" className="basis-1/3">
           <H3 className="text-white">Bidan Nina Nurlayina</H3>
           <P className="text-start text-white">
-            bidan profesional dengan dedikasi tinggi dan pengalaman luas dalam
+            Bidan profesional dengan dedikasi tinggi dan pengalaman luas dalam
             bidang kesehatan ibu dan anak. Dengan pendekatan yang ramah dan
             penuh perhatian, Bidan Nina siap memberikan perawatan terbaik selama
-            kehamilan, persalinan, dan masa pasca melahirkan.
+            kehamilan, persalinan, dan pasca melahirkan.
           </P>
         </div>
         <div id="USEFUL_LINKS" className="basis-1/3">
-          <H3 className="text-white">Useful Links</H3>
+          <H3 className="text-white">Halaman Lainnya</H3>
           <ul className="mt-2 flex flex-col gap-2 text-sm md:text-base">
             <Link className="duration-200 hover:underline" href="/">
               Beranda
@@ -25,7 +25,10 @@ export function Footer() {
             <Link className="duration-200 hover:underline" href="/tentang-kami">
               Tentang Kami
             </Link>
-            <Link className="duration-200 hover:underline" href="/layanan">
+            <Link
+              className="duration-200 hover:underline"
+              href="/layanan/layanan-ibu"
+            >
               Layanan
             </Link>
           </ul>
