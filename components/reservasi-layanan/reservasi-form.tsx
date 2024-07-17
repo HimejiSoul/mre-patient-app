@@ -99,8 +99,7 @@ export default function ReservasiForm() {
     try {
       // TODO: JUST FOR BETA TESTING
       await createReservasi(data);
-      router.push('https://forms.gle/LpxEgqWSLbZp7wSD8');
-      // router.push('/');
+      router.push('/');
       toast({
         title: `Berhasil Membuat Reservasi`,
       });
@@ -182,8 +181,6 @@ export default function ReservasiForm() {
                   className="col-span-12"
                   form={form}
                   type="number"
-                  // FIXME: Remove this after Beta Testing
-                  description="Kami tidak akan menyimpan nomor Anda untuk pengujian ini ✌️"
                 />
               </Row>
               <Row>
@@ -232,15 +229,10 @@ export default function ReservasiForm() {
                   )}
                 </Button>
                 {isVerified && (
-                  // FIXME:
                   <FormDescription className="mt-2">
-                    Anda akan diarahkan ke Google Form untuk mengisi kuesioner
-                    setelah reservasi berhasil dilakukan.
+                    Kami akan mengirimkan pesan melalui Whatsapp Anda setelah
+                    reservasi berhasil dilakukan.
                   </FormDescription>
-                  // <FormDescription className="mt-2">
-                  //   Kami akan mengirimkan pesan melalui Whatsapp Anda setelah
-                  //   reservasi berhasil dilakukan.
-                  // </FormDescription>
                 )}
               </CardFooter>
             </FormWrapper>
